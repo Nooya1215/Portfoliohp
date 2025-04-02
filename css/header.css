@@ -1,0 +1,35 @@
+header {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+header div {
+  height: 80px;
+  position: absolute;
+}
+
+header h1 {
+
+}
+
+header nav {
+  height: 100%;
+  align-items: center;
+}
+
+header nav ul {
+  gap: 20px;
+}
+
+header nav ul li {
+
+}
+
+header nav ul li a {
+
+}
+
+header nav ul li a:hover {
+
+}

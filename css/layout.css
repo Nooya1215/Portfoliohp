@@ -1,0 +1,203 @@
+/* font */
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* layout style  */
+section {
+    height: 100vh;
+    min-height: 900px;
+}
+
+.wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-between {
+    justify-content: space-between;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.flex-column-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.block {
+    display: block;
+}
+
+nav a {
+    display: block;
+}
+
+/* text style */
+.h1 {
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.h2 {
+    font-size: 54px;
+    font-weight: bold;
+}
+
+.h3 {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.h4 {
+    font-size: 25px;
+}
+
+.h5 {
+    font-size: 20px;
+}
+
+.menu {
+    font-size: 18px;
+}
+
+.submenu {
+    font-size: 18px;
+}
+
+.titlep {
+    font-size: 20px;
+}
+
+.p {
+    font-size: 18px;
+}
+
+.sm {
+    font-size: 14px;
+}
+
+.m {
+    font-size: 16px;
+}
+
+.xs {
+    font-size: 12px;
+}
+
+.white, .white a {
+    color: #fff;
+}
+
+.black, .black a {
+    color: #000;
+}
+
+.gray {
+    color: #aeb0b2;
+}
+
+.btn16 {
+    font-size: 14px;
+}
+
+.hide {
+    display: none;
+}
+
+.more {
+    border: 1px solid #fff;
+    line-height: 1;
+    padding: 17px 28px;
+    color: #fff;
+    transition: 0.5s;
+}
+
+.more::after {
+    content: "+";
+    margin-left: 10px;
+    transition: 0.5s;
+    position: relative;
+    left: 0px;
+}
+
+.more:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.more:hover::after {
+    left: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    section {
+        height: calc(100vh - 100px);
+    }
+    
+    .wrap {
+        padding: 0 35px;
+    }
+    
+    .h1 {
+        font-size: calc(66px * 0.404);
+    }
+    
+    .h2 {
+        font-size: calc(54px * 0.404);
+    }
+    
+    .h3 {
+        font-size: calc(35px * 0.404);
+    }
+    
+    .h4 {
+        font-size: calc(25px * 0.404);
+    }
+    
+    .h5 {
+        font-size: calc(20px * 0.404);
+    }
+    
+    .menu {
+        font-size: 15px;
+    }
+    
+    .submenu {
+        font-size: calc(18px * 0.404);
+    }
+    
+    .titlep {
+        font-size: 12px;
+    }
+    
+    .p {
+        font-size: calc(18px * 0.404);
+    }
+    
+    .sm {
+        font-size: calc(12px * 0.404);
+    }
+    
+    .m {
+        font-size: calc(16px * 0.404);
+    }
+    
+    .xs {
+        font-size: calc(12px * 0.404);
+    }
+}

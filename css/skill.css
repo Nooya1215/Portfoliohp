@@ -1,0 +1,20 @@
+#skill {
+  background-color: #D3C9B5;
+}
+
+#skill .wrap {
+  height: 100%;
+}
+
+#skill .h2 {
+  margin-bottom: 10px;
+}
+
+#skill .p {
+  margin-bottom: -50px;
+}
+
+#skill .skill-img {
+  width: 65%;
+  transform: translateX(-20px);
+} 

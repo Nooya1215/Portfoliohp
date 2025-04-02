@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="css/layout.css" type="text/css" />
+    <link rel="stylesheet" href="css/header.css" type="text/css" />
+    <link rel="stylesheet" href="css/title.css" type="text/css" />
+    <link rel="stylesheet" href="css/about.css" type="text/css" />
+    <link rel="stylesheet" href="css/skill.css" type="text/css" />
+    <link rel="stylesheet" href="css/portfolio.css" type="text/css" />
+    <link rel="stylesheet" href="lib/slick/slick.css" type="text/css">
+    <link rel="stylesheet" href="lib/slick/slick-theme.css" type="text/css">
+    <script src="lib/jquery-3.7.1.js" type="text/javascript"></script>
+    <script type="text/javascript" src="lib/slick/slick.min.js"></script>
+    <script src="js/portfolio.js" type="text/javascript"></script>
+    <title>KSW PORTFOLIO</title>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <nav class="flex flex-between">
+          <h1 class="h1">KSW PORTFOLIO</h1>
+          <ul class="flex">
+            <li><a href="#" class="block">HOME</a></li>
+            <li><a href="#" class="block">ABOUT ME</a></li>
+            <li><a href="#" class="block">SKILL</a></li>
+            <li><a href="#" class="block">PORTFOLIO</a></li>
+            <li><a href="#" class="block">CONTACT</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div id="title">
+      <div class="flex-column-center">
+        <h2 class="h2">FRONT-END <br />DEVELOPER</h2>
+        <h3 class="h3">SUNWOO KIM</h3>
+      </div>
+    </div>
+    <main>
+      <section id="about">
+        <div class="wrap flex-column-center">
+          <h2 class="h2">ABOUT ME</h2>
+          <div class="about-flex">
+            <img src="img/profile.png" alt="프로필 사진" />
+            <div class="flex">
+              <h3 class="h3">SUNWOO KIM</h3>
+              <time datetime="2003.05.29">2003.05.29</time>
+              <p class="p">
+                안녕하세요. <br />프론트엔드 개발자를 꿈꾸는 김선우입니다.
+                <br />"도전 없이는 성장도 없다"는 신념으로 AI 기술을 활용한
+                <br />UX/UI 개발에 매진하고 있으며, 새로운 기술 습득과 웹 개발에
+                <br />대한 열정을 가지고 매일 한 걸음씩 나아가고 있습니다.
+              </p>
+              <ul class="list-top">
+                <li><a href="#" class="block">이력서</a></li>
+                <li><a href="#" class="block">깃허브</a></li>
+              </ul>
+              <ul class="list-btm">
+                <li><a href="#" class="block">차분함</a></li>
+                <li><a href="#" class="block">성실함</a></li>
+                <li><a href="#" class="block">INFJ</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="skill">
+        <div class="wrap flex-column-center">
+          <h2 class="h2">SKILL & TOOLS</h2>
+          <p class="p">
+            Essential skills and tools for efficient development and design.
+          </p>
+          <img class="skill-img" src="img/svg/skill.svg" alt="" />
+        </div>
+      </section>
+      <section id="portfolio">
+        <div class="wrap">
+          <h2 class="h2">PORTFOLIO</h2>
+          <ul class="pf-slick">
+            <li>
+                <a class="block" href="#">
+                  <img src="img/svg/pf3.svg" alt="포트폴리오 3 이미지">
+                </a>
+              <div class="pf-info">
+                <h3 class="h3">LS그룹 홈페이지</h3>
+                <p class="p">TYPE <strong>WEB</strong></p>
+                <p class="p">PAGE <strong>Index.html</strong></p>
+                <p class="p">TOOL <strong>HTML5, CSS, Javascript</strong></p>
+                <p class="p">WORK <strong>Front-End</strong></p>
+              </div>
+            </li>
+            <li>
+                <a class="block" href="#">
+                  <img src="img/svg/pf3.svg" alt="포트폴리오 3 이미지">
+                </a>
+              <div class="pf-info">
+                <h3 class="h3">새미네 부엌</h3>
+                <p class="p">TYPE <strong>WEB</strong></p>
+                <p class="p">PAGE <strong>Index.html</strong></p>
+                <p class="p">TOOL <strong>HTML5, CSS, Javascript</strong></p>
+                <p class="p">WORK <strong>Front-End</strong></p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+#portfolio {
+
+}
+
+#portfolio .wrap {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+#portfolio .h2 {
+  transform: translateY(-100px);
+}
+
+#portfolio .pf-slick {
+  width: 100%;
+  background-color: #BCB6AC;
+  border-radius: 30px;
+}
+
+#portfolio .slick-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 160px;
+}
+
+#portfolio .slick-slide h3 {
+
+}
+
+#portfolio .slick-slide p {
+
+}
+
+#portfolio .slick-slide .p strong {
+
+}
+
+#portfolio .slick-slide a {
+  height: 100%;
+  width: 30%;
+}
+
+#portfolio .slick-slide a img {
+  width: 100%;
+}
+
+#portfolio .slick-dots {
+  transform: translateY(70px);
+}
+
+#portfolio .slick-prev {
+  left: -60px;
+  z-index: 1;
+}
+
+#portfolio .slick-arrow {
+  width: 30px;
+  height: 30px;
+}
+
+#portfolio .slick-arrow::before {
+  font-size: 0;
+  display: block;
+  height: 100%;
+  background-image: url(../img/svg/left-arrow.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#portfolio .slick-next {
+  right: -60px;
+}
+
+#portfolio .slick-next::before {
+  transform: rotate(180deg);
+}
+
+#portfolio .pf-info {
+  width: fit-content;
+  right: 10px;
+}
+
+#portfolio .pf-info h3 {
+  padding-top: 20px;
+  margin-bottom: 30px;
+}
+
+#portfolio .pf-info p {
+  margin-top: 20px;
+}
