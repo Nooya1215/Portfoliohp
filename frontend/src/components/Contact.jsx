@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import "../assets/css/Contact.css";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState(null); // 상태 메시지
+  const [status, setStatus] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [sending, setSending] = useState(false);
 
@@ -13,15 +13,28 @@ export default function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const [dots, setDots] = useState('');
+
+  useEffect(() => {
+    let interval;
+    if (sending) {
+      interval = setInterval(() => {
+        setDots(prev => (prev.length >= 2 ? '' : prev + '.'));
+      }, 700);
+    } else {
+      setDots('');
+    }
+    return () => clearInterval(interval);
+  }, [sending]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus(null);
-    setSending(true);  // 로딩 시작
+    setSending(true);
 
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/contact`, form);
 
-      // ✔️ 추가하지 않고 서버 메시지 그대로 사용
       setStatus(response.data.message);
 
       setShowPopup(true);
@@ -34,7 +47,7 @@ export default function Contact() {
       }
       setShowPopup(true);
     } finally {
-      setSending(false);  // 로딩 끝
+      setSending(false);
       setTimeout(() => setShowPopup(false), 2500);
     }
   };
@@ -104,7 +117,7 @@ export default function Contact() {
         {sending && (
           <div className="sending-overlay">
             <div className="sending-spinner" />
-            <p className="sending-text">메일 보내는 중...</p>
+            <p className="sending-text">메일 보내는 중.{dots}</p>
           </div>
         )}
       </div>
