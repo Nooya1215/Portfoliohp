@@ -2,26 +2,21 @@ import dotenv from 'dotenv';
 import express from 'express';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
-import mysql from 'mysql2/promise';
+import { createClient } from '@supabase/supabase-js';
 import leoProfanity from 'leo-profanity';
 
 dotenv.config();
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
-// MySQL 연결 설정
-const db = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-});
+// Supabase 클라이언트 생성
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
-// 욕설 필터 초기화 및 한국어 욕설 추가 (필요시)
+// 욕설 필터 초기화 및 한국어 욕설 추가
 leoProfanity.add([
   '씨발', '병신', '개새끼', '닥쳐', '꺼져', '좆', '느금마', '느금',
   '시발', '염병', '썅년', '미친년', '좆같다', '개새', '새끼', '좆밥',
@@ -45,7 +40,6 @@ app.post('/api/contact', async (req, res) => {
   }
 
   if (leoProfanity.check(name) || leoProfanity.check(message)) {
-    // 욕설 발견 시 메시지 변경
     return res.status(400).json({ success: false, message: '❌ 욕설로 인한 메시지 전송 실패' });
   }
 
@@ -76,8 +70,14 @@ app.post('/api/contact', async (req, res) => {
 // 게시글 전체 조회
 app.get('/api/board', async (req, res) => {
   try {
-    const [rows] = await db.query('SELECT * FROM board ORDER BY created_at DESC');
-    res.status(200).json(rows);
+    const { data, error } = await supabase
+      .from('board')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    res.status(200).json(data);
   } catch (err) {
     console.error('게시물 조회 실패:', err);
     res.status(500).json({ success: false, message: '게시물 조회 실패' });
@@ -97,7 +97,10 @@ app.post('/api/board', async (req, res) => {
   }
 
   try {
-    await db.query('INSERT INTO board (name, message) VALUES (?, ?)', [name, message]);
+    const { error } = await supabase.from('board').insert([{ name, message }]);
+
+    if (error) throw error;
+
     res.status(201).json({ success: true, message: '게시물이 등록되었습니다.' });
   } catch (err) {
     console.error('게시물 등록 실패:', err);
