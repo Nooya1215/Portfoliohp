@@ -60,10 +60,10 @@ app.post('/api/contact', async (req, res) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    res.status(200).json({ success: true, message: '메일이 전송되었습니다.' });
+    res.status(200).json({ success: true, message: '✔️ 메일이 전송되었습니다.' });
   } catch (err) {
     console.error('메일 전송 실패:', err);
-    res.status(500).json({ success: false, message: '메일 전송에 실패했습니다.' });
+    res.status(500).json({ success: false, message: '❌ 메일 전송에 실패했습니다.' });
   }
 });
 

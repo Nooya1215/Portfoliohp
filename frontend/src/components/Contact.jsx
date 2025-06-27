@@ -16,14 +16,14 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus(null);
-    setSending(true);
+    setSending(true);  // 로딩 시작
 
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/contact`, form);
 
-      const successMessage = `✔️ ${response.data.message}`;
+      // ✔️ 추가하지 않고 서버 메시지 그대로 사용
+      setStatus(response.data.message);
 
-      setStatus(successMessage);
       setShowPopup(true);
       setForm({ name: '', email: '', message: '' });
     } catch (error) {
