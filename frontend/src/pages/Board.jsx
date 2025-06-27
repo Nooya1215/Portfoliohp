@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -9,36 +9,19 @@ export default function Board() {
   const [form, setForm] = useState({ name: '', message: '' });
   const [showPopup, setShowPopup] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(null); // 자동 계산용
-  const containerRef = useRef(null);
-  const sampleItemRef = useRef(null);
+  
+  // ✅ 고정값: 페이지당 10개
+  const postsPerPage = 10;
 
   useEffect(() => {
     fetchEntries();
   }, []);
 
-  useEffect(() => {
-    const calculatePostsPerPage = () => {
-      if (containerRef.current && sampleItemRef.current) {
-        const containerHeight = containerRef.current.offsetHeight;
-        const itemHeight = sampleItemRef.current.offsetHeight;
-
-        if (itemHeight > 0) {
-          const possible = Math.floor(containerHeight / itemHeight);
-          setPostsPerPage(possible || 1); // 최소 1개
-        }
-      }
-    };
-
-    calculatePostsPerPage();
-    window.addEventListener('resize', calculatePostsPerPage);
-    return () => window.removeEventListener('resize', calculatePostsPerPage);
-  }, [entries]);
-
   const fetchEntries = async () => {
     try {
       const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/board`);
       const data = Array.isArray(res.data) ? res.data : res.data.data || [];
+      // 최신순 정렬
       const sorted = [...data].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
       setEntries(sorted);
     } catch (err) {
@@ -53,17 +36,20 @@ export default function Board() {
       await axios.post(`${import.meta.env.VITE_API_URL}/api/board`, form);
       setForm({ name: '', message: '' });
       setShowPopup(false);
-      fetchEntries();
-      setCurrentPage(1);
+      await fetchEntries();
+      setCurrentPage(1); // ✅ 새 글 등록 후 1페이지로 이동
     } catch (err) {
       console.error('게시물 등록 실패:', err);
     }
   };
 
-  const totalPages = postsPerPage ? Math.ceil(entries.length / postsPerPage) : 1;
-  const currentPosts = postsPerPage
-    ? entries.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
-    : entries;
+  // ✅ 페이지 계산
+  const totalPages = Math.max(1, Math.ceil(entries.length / postsPerPage));
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+  const currentPosts = entries.slice(
+    (safeCurrentPage - 1) * postsPerPage,
+    safeCurrentPage * postsPerPage
+  );
 
   return (
     <section id="board">
@@ -73,12 +59,11 @@ export default function Board() {
           <button className="open-btn" onClick={() => setShowPopup(true)}>등록</button>
         </div>
 
-        <ul className="entry-list" ref={containerRef}>
+        <ul className="entry-list">
           {currentPosts.map((entry, index) => (
             <motion.li
               key={entry.id}
               className="entry-item"
-              ref={index === 0 ? sampleItemRef : null} // 첫 아이템 높이 측정용
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -91,8 +76,8 @@ export default function Board() {
         {totalPages > 1 && (
           <div className="pagination">
             <button
-              disabled={currentPage === 1}
-              onClick={() => setCurrentPage(currentPage - 1)}
+              disabled={safeCurrentPage === 1}
+              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
               className="nav-btn"
             >
               이전
@@ -101,7 +86,7 @@ export default function Board() {
             {[...Array(totalPages)].map((_, i) => (
               <button
                 key={i}
-                className={currentPage === i + 1 ? 'active' : ''}
+                className={safeCurrentPage === i + 1 ? 'active' : ''}
                 onClick={() => setCurrentPage(i + 1)}
               >
                 {i + 1}
@@ -109,8 +94,8 @@ export default function Board() {
             ))}
 
             <button
-              disabled={currentPage === totalPages}
-              onClick={() => setCurrentPage(currentPage + 1)}
+              disabled={safeCurrentPage === totalPages}
+              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
               className="nav-btn"
             >
               다음
