@@ -31,7 +31,6 @@ leoProfanity.add([
   'ㄲㅆ', 'ㅅㅆ', 'ㅅㄹ', 'ㅆㅄ', 'ㅅㅍ', 'ㅂㅍ', 'ㅆㅈ',
 ]);
 
-// 이메일 전송 API
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -67,7 +66,6 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// 게시글 전체 조회
 app.get('/api/board', async (req, res) => {
   try {
     const { data, error } = await supabase
@@ -84,7 +82,6 @@ app.get('/api/board', async (req, res) => {
   }
 });
 
-// 게시글 등록
 app.post('/api/board', async (req, res) => {
   const { name, message } = req.body;
 

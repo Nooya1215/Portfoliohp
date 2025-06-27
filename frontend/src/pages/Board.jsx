@@ -11,7 +11,6 @@ export default function Board() {
   const [showPopup, setShowPopup] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   
-  // ✅ 고정값: 페이지당 10개
   const postsPerPage = 10;
 
   useEffect(() => {
@@ -38,13 +37,12 @@ export default function Board() {
       setForm({ name: '', message: '' });
       setShowPopup(false);
       await fetchEntries();
-      setCurrentPage(1); // ✅ 새 글 등록 후 1페이지로 이동
+      setCurrentPage(1);
     } catch (err) {
       console.error('게시물 등록 실패:', err);
     }
   };
 
-  // ✅ 페이지 계산
   const totalPages = Math.max(1, Math.ceil(entries.length / postsPerPage));
   const safeCurrentPage = Math.min(currentPage, totalPages);
   const currentPosts = entries.slice(

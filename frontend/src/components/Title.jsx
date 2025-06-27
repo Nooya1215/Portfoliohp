@@ -1,4 +1,3 @@
-// src/components/Title.jsx
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import '../assets/css/Title.css';
