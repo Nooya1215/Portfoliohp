@@ -48,6 +48,7 @@
 }
 
 #about .wrap .about-box .about-info p span {
+  height: fit-content;
   font-size: 20px;
 }
 
