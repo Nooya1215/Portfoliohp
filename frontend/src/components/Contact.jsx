@@ -20,12 +20,16 @@ export default function Contact() {
 
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/contact`, form);
-      setStatus(response.data.message);
+
+      // ✔️ 이모지 추가
+      const successMessage = `✔️ ${response.data.message}`;
+
+      setStatus(successMessage);
       setShowPopup(true);
       setForm({ name: '', email: '', message: '' });
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
-        setStatus(✔️ error.response.data.message);
+        setStatus(`❌ ${error.response.data.message}`);
       } else {
         setStatus('❌ 메일 전송에 실패했습니다. 다시 시도해주세요.');
       }
