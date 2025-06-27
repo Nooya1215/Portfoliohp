@@ -98,6 +98,12 @@ export default function Contact() {
             )}
           </AnimatePresence>
         </div>
+        {sending && (
+          <div className="sending-overlay">
+            <div className="sending-spinner" />
+            <p className="sending-text">메일 보내는 중...</p>
+          </div>
+        )}
       </div>
     </section>
   );
