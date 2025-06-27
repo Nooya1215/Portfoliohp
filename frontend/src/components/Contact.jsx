@@ -7,6 +7,7 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState(null); // 상태 메시지
   const [showPopup, setShowPopup] = useState(false);
+  const [sending, setSending] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -15,22 +16,22 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus(null);
+    setSending(true);  // 로딩 시작
 
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/contact`, form);
-      setStatus(response.data.message);  // 서버 성공 메시지 표시
+      setStatus(response.data.message);
       setShowPopup(true);
       setForm({ name: '', email: '', message: '' });
-
-      setTimeout(() => setShowPopup(false), 2500);
     } catch (error) {
-      // 서버가 보낸 메시지 있을 경우 그걸 상태에 반영
       if (error.response && error.response.data && error.response.data.message) {
         setStatus(error.response.data.message);
       } else {
         setStatus('❌ 메일 전송에 실패했습니다. 다시 시도해주세요.');
       }
       setShowPopup(true);
+    } finally {
+      setSending(false);  // 로딩 끝
       setTimeout(() => setShowPopup(false), 2500);
     }
   };
