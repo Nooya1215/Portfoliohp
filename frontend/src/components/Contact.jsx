@@ -16,12 +16,11 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus(null);
-    setSending(true);  // 로딩 시작
+    setSending(true);
 
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/contact`, form);
 
-      // ✔️ 이모지 추가
       const successMessage = `✔️ ${response.data.message}`;
 
       setStatus(successMessage);
