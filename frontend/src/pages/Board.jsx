@@ -37,7 +37,7 @@ export default function Board() {
 
   const fetchEntries = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/board');
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/board`);
       const data = Array.isArray(res.data) ? res.data : res.data.data || [];
       const sorted = [...data].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
       setEntries(sorted);
@@ -50,7 +50,7 @@ export default function Board() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/board', form);
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/board`, form);
       setForm({ name: '', message: '' });
       setShowPopup(false);
       fetchEntries();

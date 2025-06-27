@@ -17,7 +17,7 @@ export default function Contact() {
     setStatus(null);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/contact', form);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/contact`, form);
       setStatus(response.data.message);  // 서버 성공 메시지 표시
       setShowPopup(true);
       setForm({ name: '', email: '', message: '' });
