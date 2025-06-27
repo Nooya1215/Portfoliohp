@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import '../assets/css/About.css';
 import profileImg from '../assets/img/profile.png';
+import '../assets/css/About.css';
 
 export default function About() {
   const skillDescriptions = {
@@ -61,8 +61,7 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              안녕하세요. 프론트엔드 개발자 김선우입니다.
-              <br />
+              <span>안녕하세요. 프론트엔드 개발자 김선우입니다.</span>
               <br />
               저는 모던하고 심플한 UI를 추구하며,
               <br />
