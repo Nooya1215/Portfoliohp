@@ -56,7 +56,11 @@
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
   background-color: #fff;
-  transition: transform 0.3s;
+  transition: 0.4s;
+}
+
+#projects .wrap .project-grid .project-card:hover {
+  transform: translateY(-10px) !important;
 }
 
 #projects .wrap .project-grid .project-card .card-info {
@@ -143,6 +147,7 @@
   padding: 5px 10px !important;
   box-sizing: border-box;
   border: 1px solid transparent !important;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
 }
 
 .more-wrap button:hover {

@@ -26,6 +26,8 @@
   color: #000;
   height: fit-content;
   padding: 5px 15px !important;
+  border: 1px solid transparent !important;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
 }
 
 #board .wrap .board-header .open-btn:hover {
@@ -196,7 +198,7 @@
   padding: 10px 4px !important;
   box-sizing: border-box;
   border: 1px solid transparent !important;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
 }
 
 #board .wrap .popup-overlay .popup-form form button:hover {
@@ -206,7 +208,25 @@
 }
 
 #board .wrap .back-btn {
-  color: #fff !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-image: url(../img/svg/return.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  font-size: 0;
   position: absolute;
   bottom: 150px;
+  transition: background-color 0.3s ease;
+}
+
+#board .wrap .back-btn:hover {
+  background-image: url(../img/svg/return2.svg);
+  background-color: #fff !important;
 }
