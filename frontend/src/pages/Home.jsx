@@ -24,14 +24,16 @@ export default function Home() {
     const el = projectRef.current;
 
     const handleWheel = (e) => {
-      const isScrollable =
-        el.scrollHeight > el.clientHeight;
+      const isScrollable = el.scrollHeight > el.clientHeight;
       const atTop = el.scrollTop === 0;
       const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 1;
 
       if (isScrollable) {
+        // 내부 스크롤 가능한 상태에서,
+        // 스크롤 방향과 위치에 따라 Swiper 전파 막기
         if ((e.deltaY < 0 && !atTop) || (e.deltaY > 0 && !atBottom)) {
-          e.stopPropagation(); // swiper로 전달되지 않게 막음
+          e.preventDefault();  // **추가!**
+          e.stopPropagation();
         }
       }
     };

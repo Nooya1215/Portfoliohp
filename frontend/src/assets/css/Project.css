@@ -10,7 +10,7 @@
 #projects .wrap .h2 {
   font-weight: bold;
   text-align: center;
-  margin: 30px 0;
+  margin: 25px 0;
 }
 
 #projects .wrap .filter-tags {
@@ -48,7 +48,7 @@
 
 #projects .wrap .project-grid .project-card {
   width: 340px;
-  height: 370px;
+  height: 300px;
   box-sizing: border-box;
   border: 1px solid #ddd;
   border-radius: 12px;
