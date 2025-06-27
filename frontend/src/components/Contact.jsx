@@ -25,7 +25,7 @@ export default function Contact() {
       setForm({ name: '', email: '', message: '' });
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
-        setStatus(error.response.data.message);
+        setStatus(✔️ error.response.data.message);
       } else {
         setStatus('❌ 메일 전송에 실패했습니다. 다시 시도해주세요.');
       }
