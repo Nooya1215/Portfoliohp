@@ -1,0 +1,28 @@
+#aside {
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
+  z-index: 10;
+}
+
+#aside a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+#aside a::before {
+  content: '';
+  width: 25px;
+  height: 25px;
+  display: block;
+  background-image: url(../img/svg/note.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}

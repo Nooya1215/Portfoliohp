@@ -1,0 +1,148 @@
+#contact {
+  
+}
+
+#contact .wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#contact .wrap .h2 {
+  font-weight: bold;
+  margin: 50px 0;
+}
+
+#contact .wrap .contact-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 250px);
+  height: 100%;
+}
+
+#contact .wrap .contact-container .contact-card {
+  width: 440px;
+  height: 210px;
+  padding: 20px 30px;
+  background-color: #fff;
+  position: relative;
+}
+
+#contact .wrap .contact-container .contact-card h3 {
+  color: #000;
+  font-weight: bold;
+}
+
+#contact .wrap .contact-container .contact-card .card-info {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+}
+
+#contact .wrap .contact-container .contact-card .card-info p {
+  color: #000;
+  display: flex;
+  gap: 5px;
+}
+
+#contact .wrap .contact-container .contact-card .card-info p span {
+
+}
+
+#contact .wrap .contact-container .contact-card .card-info p strong {
+  width: 25px;
+  height: 25px;
+  font-size: 0;
+  background-image: url(../img/svg/mail.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#contact .wrap .contact-container .contact-card .card-info a {
+  display: flex;
+  gap: 5px;
+}
+
+#contact .wrap .contact-container .contact-card .card-info a span {
+
+}
+
+#contact .wrap .contact-container .contact-card .card-info a strong {
+  width: 25px;
+  height: 25px;
+  font-size: 0;
+  background-image: url(../img/svg/git2.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#contact .wrap .contact-container .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 450px;
+  height: 345px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 25px;
+}
+
+#contact .wrap .contact-container .form .input {
+  resize: none;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
+  width: 100%;
+  height: 35px;
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+#contact .wrap .contact-container .form p {
+  width: 100%;
+  text-align: left;
+}
+
+#contact .wrap .contact-container .form textarea {
+  height: 100px !important;
+}
+
+#contact .wrap .contact-container .form .input:focus {
+  outline: none;
+}
+
+#contact .wrap .contact-container .form .contact-btn {
+  color: #000;
+  width: 100%;
+  height: 35px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+#contact .wrap .contact-container .form .contact-btn:hover {
+  border: 1px solid #ccc !important;
+  background-color: transparent !important;
+  color: #fff;
+}
+
+#contact .wrap .contact-container .popup-message {
+  position: fixed;
+  bottom: 40px;
+  left: calc(50% - (300px / 2));
+  background-color: #222;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  font-size: 14px;
+  white-space: nowrap;
+}

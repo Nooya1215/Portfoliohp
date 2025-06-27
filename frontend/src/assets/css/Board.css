@@ -1,0 +1,212 @@
+#board {
+  height: calc(100% - 100px);
+}
+
+#board .wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+#board .wrap .board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  width: 100%;
+  margin-bottom: 70px;
+}
+
+#board .wrap .board-header h2 {
+  width: fit-content;
+  font-weight: bold;
+}
+
+#board .wrap .board-header .open-btn {
+  color: #000;
+  height: fit-content;
+  padding: 5px 15px !important;
+}
+
+#board .wrap .board-header .open-btn:hover {
+  border: 1px solid #ccc !important;
+  color: #fff;
+  background-color: transparent !important;
+  box-sizing: border-box;
+}
+
+#board .wrap ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  max-height: 370px;
+}
+
+#board .wrap ul li {
+  width: 1000px;
+  height: 35px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+#board .wrap ul li p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+#board .wrap ul li p strong {
+  position: relative;
+}
+
+#board .wrap ul li p strong::before {
+  content: '';
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  position: absolute;
+  height: calc(100% - 5px);
+  top: 2.5px;
+  right: 80px;
+}
+
+#board .wrap .pagination {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  bottom: 200px;
+}
+
+#board .wrap .pagination button {
+  padding: 10px !important;
+  color: #000;
+  width: fit-content;
+  height: fit-content;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 43px;
+}
+
+#board .wrap .pagination button.active {
+  border: 1px solid #ccc !important;
+  box-sizing: border-box;
+  background-color: transparent !important;
+  color: #fff !important;
+}
+
+#board .wrap .pagination .nav-btn, #board .wrap .pagination .nav-btn {
+  font-size: 0;
+}
+
+#board .wrap .pagination .nav-btn:disabled  {
+  background-color: #7c7e7f !important;
+  cursor: default;
+}
+
+#board .wrap .pagination .nav-btn::before {
+  content: '';
+  width: 25px;
+  height: 25px;
+  display: block;
+  background-image: url(../img/svg/arrow.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#board .wrap .pagination .nav-btn:nth-of-type(1)::before {
+  transform: rotate(180deg);
+}
+
+#board .wrap .popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#board .wrap .popup-overlay .popup-form {
+  background-color: #fff;
+  padding: 40px;
+  width: 350px;
+  position: relative;
+  border-radius: 10px;
+}
+
+#board .wrap .popup-overlay .popup-form .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #000;
+}
+
+#board .wrap .popup-overlay .popup-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#board .wrap .popup-overlay .popup-form form input {
+  color: #000;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  padding: 10px 4px;
+  font-size: 14px;
+}
+
+#board .wrap .popup-overlay .popup-form form input:focus {
+  outline: none;
+}
+
+#board .wrap .popup-overlay .popup-form form textarea {
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  resize: none;
+  padding: 10px 4px;
+  height: 100px;
+  font-size: 14px;
+}
+
+#board .wrap .popup-overlay .popup-form form textarea:focus {
+  outline: none;
+}
+
+#board .wrap .popup-overlay .popup-form form button {
+  background-color: #181818 !important;
+  color: #fff;
+  border-radius: 0;
+  padding: 10px 4px !important;
+  box-sizing: border-box;
+  border: 1px solid transparent !important;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+#board .wrap .popup-overlay .popup-form form button:hover {
+  background-color: transparent !important;
+  border: 1px solid #181818 !important;
+  color: #000;
+}
+
+#board .wrap .back-btn {
+  color: #fff !important;
+  position: absolute;
+  bottom: 150px;
+}

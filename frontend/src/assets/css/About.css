@@ -1,0 +1,88 @@
+#about {
+
+}
+
+#about .wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#about .wrap {
+
+}
+
+#about .wrap h2 {
+  transform: translateY(70px) !important;
+  font-weight: bold;
+}
+
+#about .wrap .about-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+#about .wrap .about-box img {
+  width: 400px;
+  height: 400px;
+  margin-right: 50px;
+  text-align: center;
+}
+
+#about .wrap .about-box .about-info {
+  width: 50%;
+  height: 350px;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+#about .wrap .about-box .about-info p {
+  
+}
+
+#about .wrap .about-box .about-info p::after {
+  content: '';
+  width: 100px;
+  height: 1px;
+  background-color: #ccc;
+}
+
+#about .wrap .about-box .about-info h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#about .wrap .tag-list {
+  display: flex;
+  gap: 20px;
+}
+
+#about .wrap .tag-list .tag {
+  padding: 5px 17px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  box-sizing: border-box;
+}
+
+#about .wrap .about-box .about-info .tag-description {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+}
+
+#about .wrap .tag-list .tag:hover, #about .wrap .tag-list .tag.active {
+  background-color: #fff;
+  color: #000;
+}

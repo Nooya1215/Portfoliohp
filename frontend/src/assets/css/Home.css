@@ -1,0 +1,75 @@
+.main-swiper {
+  height: 100vh;
+}
+
+.swiper-slide {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.project-slide {
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.swiper-slide.contact-slide {
+  height: calc(100vh + 17px);
+}
+
+.swiper-slide.last-slide {
+  height: 85px !important;
+}
+
+.section-indicator {
+  position: fixed;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 10;
+  align-items: end;
+}
+
+.indicator-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.indicator-item:nth-of-type(5) {
+  display: none !important;
+}
+
+.indicator-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.indicator-labelbar {
+  color: #666;
+}
+
+.indicator-dot {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #666;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: all 0.3s;
+}
+
+.indicator-item.active .indicator-label {
+  color: #fff;
+}
+
+.indicator-item.active .indicator-labelbar {
+  color: #fff;
+}
+
+.indicator-item.active .indicator-dot {
+  background-color: #ccc;
+  border-color: #fff;
+}
