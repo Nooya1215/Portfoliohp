@@ -57,6 +57,7 @@
 #about .wrap .about-box .about-info h3 {
   margin-top: 20px;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
 #about .wrap .tag-list {
