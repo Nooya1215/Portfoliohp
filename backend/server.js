@@ -13,10 +13,10 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Supabase 클라이언트 생성
+// ✅ Supabase 클라이언트 생성
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
-// 욕설 필터 초기화 및 한국어 욕설 추가
+// ✅ 욕설 필터 초기화 및 한국어 욕설 추가
 leoProfanity.add([
   '씨발', '병신', '개새끼', '닥쳐', '꺼져', '좆', '느금마', '느금',
   '시발', '염병', '썅년', '미친년', '좆같다', '개새', '새끼', '좆밥',
@@ -25,12 +25,18 @@ leoProfanity.add([
   '똥개', '개놈', '개자식', '좆물', '개지랄', '닥쳐라', '시발련',
   '병신년', '씹탱', '씨벌', '엠창', '뒈져', '씹창놈', '좆됐네', '썅년놈',
   '개좆', '좆나', '좆망', '엿같다', '개같다', '개새끼들', '좆됐다',
-  '좆됐다', '씹새끼들', '씹놈', '똥', '씹색히', '좆밥새끼', '씨팔',
+  '씹새끼들', '씹놈', '똥', '씹색히', '좆밥새끼', '씨팔',
   'ㅅㅂ', 'ㅆㅂ', 'ㅈㄹ', 'ㅂㅅ', 'ㅄ', 'ㄲㅈ', 'ㄲㅂ', 'ㅅㅄ',
   'ㄸㅅ', 'ㄱㅅ', 'ㅅㅈ', 'ㅁㅊ', 'ㄴㄹ', 'ㅂㅈ', 'ㅈㄱ', 'ㅅㄲ',
   'ㄲㅆ', 'ㅅㅆ', 'ㅅㄹ', 'ㅆㅄ', 'ㅅㅍ', 'ㅂㅍ', 'ㅆㅈ',
 ]);
 
+// ✅ 게시판 캐시 (메모리)
+let boardCache = null;
+let boardCacheTime = 0;
+const BOARD_CACHE_TTL = 60 * 1000; // 1분 (밀리초)
+
+// ✅ 연락처 이메일 전송
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -66,14 +72,26 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
+// ✅ 게시판 목록 조회 (캐싱 포함)
 app.get('/api/board', async (req, res) => {
   try {
+    const now = Date.now();
+
+    if (boardCache && (now - boardCacheTime) < BOARD_CACHE_TTL) {
+      console.log('✅ Board 캐시에서 응답');
+      return res.status(200).json(boardCache);
+    }
+
+    console.log('⏳ Board 캐시 만료, Supabase 조회');
     const { data, error } = await supabase
       .from('board')
       .select('*')
       .order('created_at', { ascending: false });
 
     if (error) throw error;
+
+    boardCache = data;
+    boardCacheTime = now;
 
     res.status(200).json(data);
   } catch (err) {
@@ -82,6 +100,7 @@ app.get('/api/board', async (req, res) => {
   }
 });
 
+// ✅ 게시판 새 글 작성 (캐시 무효화)
 app.post('/api/board', async (req, res) => {
   const { name, message } = req.body;
 
@@ -97,6 +116,9 @@ app.post('/api/board', async (req, res) => {
     const { error } = await supabase.from('board').insert([{ name, message }]);
 
     if (error) throw error;
+
+    // ✅ 캐시 무효화
+    boardCache = null;
 
     res.status(201).json({ success: true, message: '게시물이 등록되었습니다.' });
   } catch (err) {
