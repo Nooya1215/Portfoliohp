@@ -110,6 +110,10 @@ app.post('/api/board', async (req, res) => {
     return res.status(400).json({ success: false, message: '이름과 메시지를 입력해주세요.' });
   }
 
+  if (name.length > 5) {
+    return res.status(400).json({ success: false, message: '이름은 최대 5자까지 입력 가능합니다.' });
+  }
+
   if (leoProfanity.check(name) || leoProfanity.check(message)) {
     return res.status(400).json({ success: false, message: '부적절한 언어가 포함되어 있습니다.' });
   }

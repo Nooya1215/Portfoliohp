@@ -112,7 +112,9 @@ export default function Board() {
                     type="text"
                     placeholder="이름 & 닉네임"
                     value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, name: e.target.value.slice(0, 5) })
+                    }
                     required
                   />
                   <textarea
