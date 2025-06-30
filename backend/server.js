@@ -34,7 +34,9 @@ leoProfanity.add([
 // ✅ 게시판 캐시 (메모리)
 let boardCache = null;
 let boardCacheTime = 0;
-const BOARD_CACHE_TTL = 60 * 1000; // 1분 (밀리초)
+
+// 4일로 TTL 연장
+const BOARD_CACHE_TTL = 4 * 24 * 60 * 60 * 1000; // 4일 (밀리초)
 
 // ✅ 연락처 이메일 전송
 app.post('/api/contact', async (req, res) => {
@@ -100,7 +102,7 @@ app.get('/api/board', async (req, res) => {
   }
 });
 
-// ✅ 게시판 새 글 작성 (캐시 무효화)
+// ✅ 게시판 새 글 작성 (캐시 무효화 및 시간 초기화)
 app.post('/api/board', async (req, res) => {
   const { name, message } = req.body;
 
@@ -117,8 +119,9 @@ app.post('/api/board', async (req, res) => {
 
     if (error) throw error;
 
-    // ✅ 캐시 무효화
+    // ✅ 캐시 무효화 및 시간 초기화
     boardCache = null;
+    boardCacheTime = 0;
 
     res.status(201).json({ success: true, message: '게시물이 등록되었습니다.' });
   } catch (err) {
