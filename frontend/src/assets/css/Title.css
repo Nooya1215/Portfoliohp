@@ -24,17 +24,18 @@
   overflow-x: visible;
 }
 
-#title .title-info  .title-line-wrapper {
+#title .title-info .title-line-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   perspective: 1200px;
   gap: 30px;
   margin-bottom: 150px;
+  width: 100vw;
   height: 100px;
 }
 
-#title .title-info  .title-line-wrapper .hinge-left, #title .hinge-right {
+#title .title-info .title-line-wrapper .hinge-left, #title .hinge-right {
   font-size: 60px;
   font-weight: bold;
   transform-style: preserve-3d;
@@ -43,16 +44,16 @@
   color: #fff;
 }
 
-#title .title-info  .title-line-wrapper h2 {
+#title .title-info .title-line-wrapper h2 {
   font-size: 140px !important;
 }
 
-#title .title-info  .title-line-wrapper .hinge-left {
+#title .title-info .title-line-wrapper .hinge-left {
   transform-origin: right center;
   margin-bottom: 180px;
 }
 
-#title .title-info  .title-line-wrapper .hinge-right {
+#title .title-info .title-line-wrapper .hinge-right {
   transform-origin: left center;
 }
 
