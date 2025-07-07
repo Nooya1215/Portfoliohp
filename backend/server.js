@@ -35,6 +35,25 @@ let boardCache = null;
 let boardCacheTime = 0;
 const BOARD_CACHE_TTL = 4 * 24 * 60 * 60 * 1000;
 
+async function preloadBoardCache() {
+  try {
+    console.log('🚀 서버 시작 시 Board 데이터 캐시 로딩...');
+    const { data, error } = await supabase
+      .from('board')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    boardCache = data;
+    boardCacheTime = Date.now();
+
+    console.log('✅ Board 캐시 preload 완료');
+  } catch (err) {
+    console.error('❌ Board 캐시 preload 실패:', err);
+  }
+}
+
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -148,6 +167,7 @@ app.post('/api/board', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
+app.listen(PORT, async () => {
+  console.log(`Server listening on port ${PORT}`);
+  await preloadBoardCache();
 });

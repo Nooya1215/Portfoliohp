@@ -13,7 +13,7 @@
 }
 
 .swiper-slide.contact-slide {
-  height: calc(100vh + 17px);
+  height: 100vh;
 }
 
 .swiper-slide.last-slide {
