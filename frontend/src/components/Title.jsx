@@ -9,9 +9,7 @@ const TypingText = ({ text, onComplete }) => {
     hidden: { opacity: 1 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.07,
-      },
+      transition: { staggerChildren: 0.07 },
     },
   };
 
@@ -80,7 +78,7 @@ const NameTyping = ({ names = [], typingSpeed = 150, pauseTime = 1000 }) => {
   );
 };
 
-export default function Title() {
+export default function Title({ onIntroComplete }) {
   const [showTitle, setShowTitle] = useState(false);
   const [showTyping, setShowTyping] = useState(false);
   const [showNameTyping, setShowNameTyping] = useState(false);
@@ -101,8 +99,15 @@ export default function Title() {
   const handleTypingComplete = () => {
     setShowNameTyping(true);
     setShowDownline(false);
-    setTimeout(() => setShowDownline(true), 1000); // ↓ 딜레이 후 등장
+    setTimeout(() => setShowDownline(true), 1000);
   };
+
+  // ✅ 모든 애니메이션 끝난 뒤 스크롤 해제
+  useEffect(() => {
+    if (showDownline && onIntroComplete) {
+      onIntroComplete();
+    }
+  }, [showDownline, onIntroComplete]);
 
   return (
     <div id="title">
