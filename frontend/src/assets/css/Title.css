@@ -21,6 +21,7 @@
 #title .wrap .title-info {
   height: 500px;
   margin-top: 220px;
+  overflow-x: visible;
 }
 
 #title .title-info  .title-line-wrapper {
@@ -29,7 +30,7 @@
   align-items: center;
   perspective: 1200px;
   gap: 30px;
-  margin-bottom: 40px;
+  margin-bottom: 150px;
   height: 100px;
 }
 
@@ -43,7 +44,7 @@
 }
 
 #title .title-info  .title-line-wrapper h2 {
-  font-size: 100px !important;
+  font-size: 140px !important;
 }
 
 #title .title-info  .title-line-wrapper .hinge-left {

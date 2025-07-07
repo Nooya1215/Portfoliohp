@@ -90,9 +90,9 @@
 }
 
 #projects .wrap .project-grid .project-card .card-info .project-info p {
-  font-size: 15.2px;
+  font-size: 15px;
   color: #555;
-  margin: 0;
+  font-weight: bold;
 }
 
 #projects .wrap .project-grid .project-card .card-info .project-info .tech-list {
