@@ -11,7 +11,7 @@
 
 #contact .wrap .h2 {
   font-weight: bold;
-  margin: 50px 0;
+  transform: translateY(100px);
 }
 
 #contact .wrap .contact-container {

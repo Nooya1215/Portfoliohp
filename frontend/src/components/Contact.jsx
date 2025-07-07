@@ -61,7 +61,7 @@ export default function Contact() {
             <h3 className="h3">SEONWOO KIM</h3>
             <div className='card-info'>
               <p className='p'><strong>E-Mail</strong><span>:</span>sunwoo78341@gmail.com</p>
-              <a href="https://github.com/Nooya1215"><strong>GitHub</strong><span>:</span>github.com/Nooya1215</a>
+              <a href="https://github.com/Nooya1215" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong><span>:</span>github.com/Nooya1215</a>
             </div>
           </div>
           <form onSubmit={handleSubmit} className="form">
