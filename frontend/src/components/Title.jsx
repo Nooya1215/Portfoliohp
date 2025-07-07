@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import '../assets/css/Title.css';
 
 const TypingText = ({ text, onComplete }) => {
@@ -84,6 +84,7 @@ export default function Title() {
   const [showTitle, setShowTitle] = useState(false);
   const [showTyping, setShowTyping] = useState(false);
   const [showNameTyping, setShowNameTyping] = useState(false);
+  const [showDownline, setShowDownline] = useState(false);
 
   useEffect(() => {
     const introTimer = setTimeout(() => setShowTitle(true), 300);
@@ -96,6 +97,12 @@ export default function Title() {
       return () => clearTimeout(typingDelayTimer);
     }
   }, [showTitle]);
+
+  const handleTypingComplete = () => {
+    setShowNameTyping(true);
+    setShowDownline(false);
+    setTimeout(() => setShowDownline(true), 1000); // ↓ 딜레이 후 등장
+  };
 
   return (
     <div id="title">
@@ -126,14 +133,30 @@ export default function Title() {
               <>
                 <TypingText
                   text="섬세한 UI와 AI로 경험을 빚는 개발자"
-                  onComplete={() => setShowNameTyping(true)}
+                  onComplete={handleTypingComplete}
                 />
+
                 {showNameTyping && (
-                  <NameTyping
-                    names={['김선우', 'KIM SEONWOO']}
-                    typingSpeed={150}
-                    pauseTime={1000}
-                  />
+                  <>
+                    <NameTyping
+                      names={['김선우', 'KIM SEONWOO']}
+                      typingSpeed={150}
+                      pauseTime={1000}
+                    />
+                    <AnimatePresence>
+                      {showDownline && (
+                        <motion.div
+                          className="downline"
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 1 }}
+                        >
+                          ↓
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </>
                 )}
               </>
             )}
