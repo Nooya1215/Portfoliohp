@@ -31,14 +31,10 @@ leoProfanity.add([
   'ㄲㅆ', 'ㅅㅆ', 'ㅅㄹ', 'ㅆㅄ', 'ㅅㅍ', 'ㅂㅍ', 'ㅆㅈ',
 ]);
 
-// ✅ 게시판 캐시 (메모리)
 let boardCache = null;
 let boardCacheTime = 0;
+const BOARD_CACHE_TTL = 4 * 24 * 60 * 60 * 1000;
 
-// 4일로 TTL 연장
-const BOARD_CACHE_TTL = 4 * 24 * 60 * 60 * 1000; // 4일 (밀리초)
-
-// ✅ 연락처 이메일 전송
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -74,7 +70,6 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// ✅ 게시판 목록 조회 (캐싱 포함)
 app.get('/api/board', async (req, res) => {
   try {
     const now = Date.now();
@@ -104,33 +99,52 @@ app.get('/api/board', async (req, res) => {
 
 // ✅ 게시판 새 글 작성 (캐시 무효화 및 시간 초기화)
 app.post('/api/board', async (req, res) => {
-  const { name, message } = req.body;
-
-  if (!name || !message) {
-    return res.status(400).json({ success: false, message: '이름과 메시지를 입력해주세요.' });
-  }
-
-  if (name.length > 5) {
-    return res.status(400).json({ success: false, message: '이름은 최대 5자까지 입력 가능합니다.' });
-  }
-
-  if (leoProfanity.check(name) || leoProfanity.check(message)) {
-    return res.status(400).json({ success: false, message: '부적절한 언어가 포함되어 있습니다.' });
-  }
-
   try {
-    const { error } = await supabase.from('board').insert([{ name, message }]);
+    const { name, message } = req.body;
+
+    // ✅ 유효성 검사
+    if (!name || !message) {
+      return res.status(400).json({
+        success: false,
+        message: '이름과 메시지를 입력해주세요.'
+      });
+    }
+
+    if (name.length > 5) {
+      return res.status(400).json({
+        success: false,
+        message: '이름은 최대 5자까지 입력 가능합니다.'
+      });
+    }
+
+    if (leoProfanity.check(name) || leoProfanity.check(message)) {
+      return res.status(400).json({
+        success: false,
+        message: '부적절한 언어가 포함되어 있습니다.'
+      });
+    }
+
+    // ✅ Supabase에 저장
+    const { error } = await supabase
+      .from('board')
+      .insert([{ name, message }]);
 
     if (error) throw error;
 
-    // ✅ 캐시 무효화 및 시간 초기화
+    // ✅ 캐시 무효화
     boardCache = null;
     boardCacheTime = 0;
 
-    res.status(201).json({ success: true, message: '게시물이 등록되었습니다.' });
+    return res.status(201).json({
+      success: true,
+      message: '게시물이 등록되었습니다.'
+    });
   } catch (err) {
     console.error('게시물 등록 실패:', err);
-    res.status(500).json({ success: false, message: '게시물 등록 실패' });
+    return res.status(500).json({
+      success: false,
+      message: '게시물 등록 실패'
+    });
   }
 });
 
