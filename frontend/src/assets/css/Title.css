@@ -80,11 +80,11 @@
 #title .downline {
   font-size: 0;
   position: absolute;
-  bottom: 80px;
+  bottom: 55px;
   left: 50%;
   width: 40px;
   height: 40px;
-  background-image: url(../img/svg/donw.svg);
+  background-image: url(../img/svg/down.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

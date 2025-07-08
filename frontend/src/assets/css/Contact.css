@@ -28,6 +28,12 @@
   padding: 20px 30px;
   background-color: #fff;
   position: relative;
+  transition: 0.3s ease-out;
+  cursor: default;
+}
+
+#contact .wrap .contact-container .contact-card:hover {
+  transform: scale(1.02);
 }
 
 #contact .wrap .contact-container .contact-card h3 {
