@@ -1,0 +1,52 @@
+[
+  {
+    "title": "SimplyDesign",
+    "description": "SimplyDesign UI Clone 프로젝트",
+    "info": "이 프로젝트는 가상의 테크 스타트업을 위한 반응형 랜딩페이지를 기획하고 제작한 것입니다. \nUI/UX 디자인과 프론트엔드 개발 역량을 보여주는 동시에, \n모바일과 데스크탑 환경에서의 반응형 디자인을 완성도를 높여 구현하였습니다.",
+    "tech": ["HTML", "CSS", "Javascript"],
+    "type": "solo",
+    "image": "/img/simplydesign.png",
+    "git": "https://github.com/Nooya1215/Portfolio1",
+    "link": "https://nooya1215.github.io/Portfolio1/"
+  },
+  {
+    "title": "LS그룹",
+    "description": "LS그룹 UI Clone 프로젝트",
+    "info": "대기업 홈페이지 레이아웃을 그대로 구현하며 CSS Grid와 Flexbox를 연습했습니다. \n반응형 레이아웃과 전역 스타일 관리도 학습했습니다.",
+    "tech": ["HTML", "CSS", "Javascript"],
+    "type": "solo",
+    "image": "https://via.placeholder.com/400x300?text=Portfolio",
+    "git": "https://github.com/Nooya1215/Portfolio2",
+    "link": "https://nooya1215.github.io/Portfolio2/"
+  },
+  {
+    "title": "WOODIN",
+    "description": "WOODIN UI Clone 프로젝트",
+    "info": "WOODIN은 가구 브랜드 웹사이트를 클론 코딩한 프로젝트입니다.\nObserver API를 활용한 섹션 활성화 트리거를 구현하고,\nGSAP으로 스크롤 애니메이션을 자연스럽게 적용했습니다.\n또한 Slick과 jQuery를 사용해 배너 슬라이더와 제품 디테일 갤러리를 제작했습니다.",
+    "tech": ["HTML", "CSS", "Javascript"],
+    "type": "solo",
+    "image": "https://via.placeholder.com/400x300?text=Portfolio",
+    "git": "https://github.com/Nooya1215/WOODIN",
+    "link": "#"
+  },
+  {
+    "title": "MOREVI",
+    "description": "투썬 팀원과 함께 만든 여행 예약 플랫폼",
+    "info": "React와 Node.js로 프론트-백엔드를 연결했습니다. MySQL로 여행 상품과 예약 정보를 관리하고, \n국내 여행지를 기준으로 한 예약 리스트/검색 기능을 구현했습니다.",
+    "tech": ["React", "Node.js", "MySQL"],
+    "type": "team",
+    "image": "https://via.placeholder.com/400x300?text=1-D-CLASS",
+    "git": "https://github.com/Nooya1215/Morevi",
+    "link": "https://yourprojectlink.com"
+  },
+  {
+    "title": "1D CLASS",
+    "description": "STUDIO 3 팀원과 함께 만든 클래스 예약 플랫폼",
+    "info": "1D CLASS는 원데이 클래스 예약 플랫폼으로 React를 사용해 사용자 예약 페이지를 구현했습니다. Node.js(Express) 서버와 MySQL DB를 연동해 예약 데이터 관리(CRUD)를 담당했고 \nJWT를 활용해 로그인·회원가입 인증 기능을 구축했습니다. \n또한 Rasa 오픈소스를 적용해 AI 챗봇 기능을 개발했으며 \n협업은 Discord로 진행했고 UI 설계는 Figma로 체계화했습니다.",
+    "tech": ["React", "Node.js", "MySQL"],
+    "type": "team",
+    "image": "https://via.placeholder.com/400x300?text=Portfolio",
+    "git": "https://yourportfolio.com",
+    "link": "https://yourportfolio.com"
+  }
+]

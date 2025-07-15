@@ -1,5 +1,6 @@
 #projects {
   height: fit-content;
+  position: relative;
 }
 
 #projects .wrap {
@@ -57,6 +58,7 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
   background-color: #fff;
   transition: 0.4s;
+  cursor: pointer;
 }
 
 #projects .wrap .project-grid .project-card:hover {
@@ -64,16 +66,22 @@
 }
 
 #projects .wrap .project-grid .project-card .card-info {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  align-items: center;
+  overflow: visible;
 }
 
 #projects .wrap .project-grid .project-card .card-info .project-image {
-  width: 100%;
+  width: 340px;
   height: 50%;
-  object-fit: cover;
   display: block;
+  object-position: center;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  transform: translateY(-1px);
 }
 
 #projects .wrap .project-grid .project-card .card-info .project-info {
@@ -81,17 +89,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
   height: 50%;
+  box-sizing: border-box;
 }
 
 #projects .wrap .project-grid .project-card .card-info .project-info h3 {
-  margin: 0 0 8px;
-  font-size: 17.6px;
-}
-
-#projects .wrap .project-grid .project-card .card-info .project-info p {
-  font-size: 15px;
-  color: #555;
+  font-size: 16px;
+  color: #000;
   font-weight: bold;
 }
 

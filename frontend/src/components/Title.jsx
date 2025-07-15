@@ -43,6 +43,7 @@ const NameTyping = ({ names = [], typingSpeed = 150, pauseTime = 1000 }) => {
   const [idx, setIdx] = useState(0);
   const [display, setDisplay] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isBlink, setIsBlink] = useState(false); // ✅ 변수명 변경
 
   useEffect(() => {
     const currentName = names[idx];
@@ -50,13 +51,16 @@ const NameTyping = ({ names = [], typingSpeed = 150, pauseTime = 1000 }) => {
 
     if (!isDeleting) {
       if (display.length < currentName.length) {
+        setIsBlink(false); // 타이핑 중에는 커서 고정
         timeout = setTimeout(() => {
           setDisplay(currentName.slice(0, display.length + 1));
         }, typingSpeed);
       } else {
+        setIsBlink(true); // 타이핑 완료 → 커서 깜빡임 시작
         timeout = setTimeout(() => setIsDeleting(true), pauseTime);
       }
     } else {
+      setIsBlink(false); // 지우는 중에는 커서 고정
       if (display.length > 0) {
         timeout = setTimeout(() => {
           setDisplay(currentName.slice(0, display.length - 1));
@@ -73,7 +77,7 @@ const NameTyping = ({ names = [], typingSpeed = 150, pauseTime = 1000 }) => {
   return (
     <h3 className="typing-name">
       {display}
-      <span className="cursor">|</span>
+      <span className={`cursor ${isBlink ? 'blink' : ''}`}>|</span>
     </h3>
   );
 };

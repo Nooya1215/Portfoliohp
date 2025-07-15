@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Mousewheel } from 'swiper/modules';
+import ProjectInfoModal from '../components/ProjectInfo';
 import '../assets/css/Home.css';
 
 import 'swiper/css';
@@ -19,6 +20,7 @@ export default function Home() {
   const swiperRef = useRef(null);
   const projectRef = useRef(null);
   const sections = ['Title', 'About', 'Project', 'Contact', 'Footer'];
+  const [selectedProject, setSelectedProject] = useState(null);
 
   // Project 내부 wheel 이벤트 차단
   useEffect(() => {
@@ -78,10 +80,17 @@ export default function Home() {
           <Title onIntroComplete={() => setIsLocked(false)} />
         </SwiperSlide>
         <SwiperSlide><About /></SwiperSlide>
-        <SwiperSlide className="project-slide" ref={projectRef}><Project /></SwiperSlide>
+        <SwiperSlide className="project-slide" ref={projectRef}><Project onSelect={setSelectedProject} /></SwiperSlide>
         <SwiperSlide className="contact-slide"><Contact /></SwiperSlide>
         <SwiperSlide className="last-slide"><Footer /></SwiperSlide>
       </Swiper>
+
+      {selectedProject && (
+        <ProjectInfoModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
 
       <Aside />
 

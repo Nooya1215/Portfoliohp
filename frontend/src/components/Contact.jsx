@@ -65,6 +65,7 @@ export default function Contact() {
             </div>
           </div>
           <form onSubmit={handleSubmit} className="form">
+            <h3></h3>
             <p className='p'>Name</p>
             <input
               type="text"

@@ -1,146 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import projects from '../data/projects.json';
 import '../assets/css/Project.css';
 
-const projects = [
-  {
-    title: 'SimplyDesign',
-    description: 'SimplyDesign UI Clone 프로젝트',
-    tech: ['HTML', 'CSS', 'Javascript'],
-    type: 'solo',
-    image: 'https://via.placeholder.com/400x300?text=1-D-CLASS',
-    git: 'https://github.com/Nooya1215/Portfolio1',
-    link: 'https://nooya1215.github.io/Portfolio1/',
-  },
-  {
-    title: 'LS그룹',
-    description: 'LS그룹 UI Clone 프로젝트',
-    tech: ['HTML', 'CSS', 'Javascript'],
-    type: 'solo',
-    image: 'https://via.placeholder.com/400x300?text=Portfolio',
-    git: 'https://github.com/Nooya1215/Portfolio2',
-    link: 'https://nooya1215.github.io/Portfolio2/',
-  },
-  {
-    title: 'WOODIN',
-    description: 'WOODIN UI Clone 프로젝트',
-    tech: ['HTML', 'CSS', 'Javascript'],
-    type: 'solo',
-    image: 'https://via.placeholder.com/400x300?text=Portfolio',
-    git: 'https://github.com/Nooya1215/WOODIN',
-    link: '#',
-  },
-  {
-    title: 'MOREVI',
-    description: '투썬 팀원과 함께 만든 여행 예약 플랫폼',
-    tech: ['React', 'Node.js', 'MySQL'],
-    type: 'team',
-    image: 'https://via.placeholder.com/400x300?text=1-D-CLASS',
-    git: 'https://github.com/Nooya1215/Morevi',
-    link: 'https://yourprojectlink.com',
-  },
-  {
-    title: '1D CLASS',
-    description: 'STUDIO 3 팀원과 함께 만든 클래스 예약 플랫폼',
-    tech: ['React', 'Node.js', 'MySQL'],
-    type: 'team',
-    image: 'https://via.placeholder.com/400x300?text=Portfolio',
-    git: 'https://yourportfolio.com',
-    link: 'https://yourportfolio.com',
-  },
-  {
-    title: 'SimplyDesign',
-    description: 'SimplyDesign UI Clone 프로젝트',
-    tech: ['HTML', 'CSS', 'Javascript'],
-    type: 'solo',
-    image: 'https://via.placeholder.com/400x300?text=1-D-CLASS',
-    git: 'https://github.com/Nooya1215/Portfolio1',
-    link: 'https://nooya1215.github.io/Portfolio1/',
-  },
-  {
-    title: 'LS그룹',
-    description: 'LS그룹 UI Clone 프로젝트',
-    tech: ['HTML', 'CSS', 'Javascript'],
-    type: 'solo',
-    image: 'https://via.placeholder.com/400x300?text=Portfolio',
-    git: 'https://github.com/Nooya1215/Portfolio2',
-    link: 'https://nooya1215.github.io/Portfolio2/',
-  },
-  {
-    title: 'WOODIN',
-    description: 'WOODIN UI Clone 프로젝트',
-    tech: ['HTML', 'CSS', 'Javascript'],
-    type: 'solo',
-    image: 'https://via.placeholder.com/400x300?text=Portfolio',
-    git: 'https://github.com/Nooya1215/WOODIN',
-    link: '#',
-  },
-  {
-    title: 'MOREVI',
-    description: '투썬 팀원과 함께 만든 여행 예약 플랫폼',
-    tech: ['React', 'Node.js', 'MySQL'],
-    type: 'team',
-    image: 'https://via.placeholder.com/400x300?text=1-D-CLASS',
-    git: 'https://github.com/Nooya1215/Morevi',
-    link: 'https://yourprojectlink.com',
-  },
-  {
-    title: '1D CLASS',
-    description: 'STUDIO 3 팀원과 함께 만든 클래스 예약 플랫폼',
-    tech: ['React', 'Node.js', 'MySQL'],
-    type: 'team',
-    image: 'https://via.placeholder.com/400x300?text=Portfolio',
-    git: 'https://yourportfolio.com',
-    link: 'https://yourportfolio.com',
-  },
-  {
-    title: 'SimplyDesign',
-    description: 'SimplyDesign UI Clone 프로젝트',
-    tech: ['HTML', 'CSS', 'Javascript'],
-    type: 'solo',
-    image: 'https://via.placeholder.com/400x300?text=1-D-CLASS',
-    git: 'https://github.com/Nooya1215/Portfolio1',
-    link: 'https://nooya1215.github.io/Portfolio1/',
-  },
-  {
-    title: 'LS그룹',
-    description: 'LS그룹 UI Clone 프로젝트',
-    tech: ['HTML', 'CSS', 'Javascript'],
-    type: 'solo',
-    image: 'https://via.placeholder.com/400x300?text=Portfolio',
-    git: 'https://github.com/Nooya1215/Portfolio2',
-    link: 'https://nooya1215.github.io/Portfolio2/',
-  },
-  {
-    title: 'WOODIN',
-    description: 'WOODIN UI Clone 프로젝트',
-    tech: ['HTML', 'CSS', 'Javascript'],
-    type: 'solo',
-    image: 'https://via.placeholder.com/400x300?text=Portfolio',
-    git: 'https://github.com/Nooya1215/WOODIN',
-    link: '#',
-  },
-  {
-    title: 'MOREVI',
-    description: '투썬 팀원과 함께 만든 여행 예약 플랫폼',
-    tech: ['React', 'Node.js', 'MySQL'],
-    type: 'team',
-    image: 'https://via.placeholder.com/400x300?text=1-D-CLASS',
-    git: 'https://github.com/Nooya1215/Morevi',
-    link: 'https://yourprojectlink.com',
-  },
-  {
-    title: '1D CLASS',
-    description: 'STUDIO 3 팀원과 함께 만든 클래스 예약 플랫폼',
-    tech: ['React', 'Node.js', 'MySQL'],
-    type: 'team',
-    image: 'https://via.placeholder.com/400x300?text=Portfolio',
-    git: 'https://yourportfolio.com',
-    link: 'https://yourportfolio.com',
-  },
-];
-
-export default function Project() {
+export default function Project({ onSelect }) {
   const initialCount = 8;
   const [visibleCount, setVisibleCount] = useState(initialCount);
   const [filter, setFilter] = useState('all');
@@ -202,12 +65,12 @@ export default function Project() {
                 initial={isAnimated ? { opacity: 0, y: 30 } : false}
                 animate={isAnimated ? { opacity: 1, y: 0 } : false}
                 transition={isAnimated ? { duration: 0.6, delay: 0.1 * index } : {}}
+                onClick={() => onSelect(project)}
               >
                 <article className="card-info">
                   <img src={project.image} alt={project.title} className="project-image" />
                   <div className="project-info">
                     <h3>{project.title}</h3>
-                    <p>{project.description}</p>
                     <div className="tech-list">
                       {project.tech.map((tech, i) => (
                         <span key={i}>{tech}</span>
@@ -215,8 +78,8 @@ export default function Project() {
                       <span className="project-type">{project.type.toUpperCase()}</span>
                     </div>
                     <div className="project-btn">
-                      <a href={project.git} target="_blank" rel="noopener noreferrer">GITHUB</a>
-                      <a href={project.link} target="_blank" rel="noopener noreferrer">Link</a>
+                      <a href={project.git} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>GITHUB</a>
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>Link</a>
                     </div>
                   </div>
                 </article>
