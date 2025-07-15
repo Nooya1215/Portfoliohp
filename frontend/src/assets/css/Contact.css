@@ -110,6 +110,7 @@
   box-sizing: border-box;
   font-size: 14px;
   border-radius: 5px;
+  cursor: none;
 }
 
 #contact .wrap .contact-container .form p {
@@ -119,6 +120,7 @@
 
 #contact .wrap .contact-container .form textarea {
   height: 100px !important;
+  cursor: none;
 }
 
 #contact .wrap .contact-container .form .input:focus {
