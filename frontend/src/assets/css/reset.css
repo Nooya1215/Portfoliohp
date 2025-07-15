@@ -15,6 +15,7 @@ html, body {
   font-style: normal;
   color: #fff !important;
   background-color: #181818 !important;
+  cursor: none;
 }
 
 * {
@@ -50,7 +51,7 @@ button {
   margin: 0;
   font: inherit;
   color: inherit;
-  cursor: pointer;
+  cursor: none;
   background-color: #fff !important;
   transition: none !important;
   padding: 0 !important;

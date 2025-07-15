@@ -58,7 +58,7 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
   background-color: #fff;
   transition: 0.4s;
-  cursor: pointer;
+  cursor: none;
 }
 
 #projects .wrap .project-grid .project-card:hover {

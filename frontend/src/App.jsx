@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import AppRouter from './router';
 import Loader from './components/Loader';
+import Cursor from './components/Cursor';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -30,6 +31,7 @@ export default function App() {
       ) : (
         <BrowserRouter>
           <AppRouter />
+          <Cursor />
         </BrowserRouter>
       )}
     </>

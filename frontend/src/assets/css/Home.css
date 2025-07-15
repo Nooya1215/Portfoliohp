@@ -36,7 +36,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  cursor: pointer;
+  cursor: none;
 }
 
 .indicator-item:nth-of-type(5) {
