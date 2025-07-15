@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../assets/css/Title.css';
 
@@ -28,7 +28,7 @@ const TypingText = ({ text, onComplete }) => {
     >
       {letters.map((letter, index) => (
         <motion.span
-          key={index}
+          key={`${letter}-${index}`}
           variants={child}
           style={{ display: 'inline-block' }}
         >
@@ -40,39 +40,39 @@ const TypingText = ({ text, onComplete }) => {
 };
 
 const NameTyping = ({ names = [], typingSpeed = 150, pauseTime = 1000 }) => {
-  const [idx, setIdx] = useState(0);
   const [display, setDisplay] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isBlink, setIsBlink] = useState(false); // ✅ 변수명 변경
+  const [index, setIndex] = useState(0);
+  const [isBlink, setIsBlink] = useState(false);
 
   useEffect(() => {
-    const currentName = names[idx];
     let timeout;
 
+    const currentName = names[index];
     if (!isDeleting) {
       if (display.length < currentName.length) {
-        setIsBlink(false); // 타이핑 중에는 커서 고정
+        setIsBlink(false);
         timeout = setTimeout(() => {
           setDisplay(currentName.slice(0, display.length + 1));
         }, typingSpeed);
       } else {
-        setIsBlink(true); // 타이핑 완료 → 커서 깜빡임 시작
+        setIsBlink(true);
         timeout = setTimeout(() => setIsDeleting(true), pauseTime);
       }
     } else {
-      setIsBlink(false); // 지우는 중에는 커서 고정
+      setIsBlink(false);
       if (display.length > 0) {
         timeout = setTimeout(() => {
           setDisplay(currentName.slice(0, display.length - 1));
         }, typingSpeed / 2);
       } else {
         setIsDeleting(false);
-        setIdx((prev) => (prev + 1) % names.length);
+        setIndex((prev) => (prev + 1) % names.length);
       }
     }
 
     return () => clearTimeout(timeout);
-  }, [display, isDeleting, idx, names, typingSpeed, pauseTime]);
+  }, [display, isDeleting, index, names, typingSpeed, pauseTime]);
 
   return (
     <h3 className="typing-name">
@@ -83,30 +83,38 @@ const NameTyping = ({ names = [], typingSpeed = 150, pauseTime = 1000 }) => {
 };
 
 export default function Title({ onIntroComplete }) {
-  const [showTitle, setShowTitle] = useState(false);
-  const [showTyping, setShowTyping] = useState(false);
+  const [step, setStep] = useState(0);
   const [showNameTyping, setShowNameTyping] = useState(false);
   const [showDownline, setShowDownline] = useState(false);
+  const isMounted = useRef(true);
 
   useEffect(() => {
-    const introTimer = setTimeout(() => setShowTitle(true), 300);
-    return () => clearTimeout(introTimer);
+    isMounted.current = true;
+
+    const runIntro = async () => {
+      await wait(300);
+      if (!isMounted.current) return;
+      setStep(1);
+
+      await wait(1700);
+      if (!isMounted.current) return;
+      setStep(2);
+    };
+
+    runIntro();
+
+    return () => {
+      isMounted.current = false;
+    };
   }, []);
-
-  useEffect(() => {
-    if (showTitle) {
-      const typingDelayTimer = setTimeout(() => setShowTyping(true), 1700);
-      return () => clearTimeout(typingDelayTimer);
-    }
-  }, [showTitle]);
 
   const handleTypingComplete = () => {
     setShowNameTyping(true);
     setShowDownline(false);
+
     setTimeout(() => setShowDownline(true), 1000);
   };
 
-  // ✅ 모든 애니메이션 끝난 뒤 스크롤 해제
   useEffect(() => {
     if (showDownline && onIntroComplete) {
       onIntroComplete();
@@ -115,7 +123,7 @@ export default function Title({ onIntroComplete }) {
 
   return (
     <div id="title">
-      {showTitle && (
+      {step > 0 && (
         <div className="wrap">
           <div className="title-info">
             <div className="title-line-wrapper">
@@ -138,8 +146,8 @@ export default function Title({ onIntroComplete }) {
               </motion.h2>
             </div>
 
-            {showTyping && (
-              <>
+            {step > 1 && (
+              <div className="intro-body">
                 <TypingText
                   text="섬세한 UI와 AI로 경험을 빚는 개발자"
                   onComplete={handleTypingComplete}
@@ -167,11 +175,15 @@ export default function Title({ onIntroComplete }) {
                     </AnimatePresence>
                   </>
                 )}
-              </>
+              </div>
             )}
           </div>
         </div>
       )}
     </div>
   );
+}
+
+function wait(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
