@@ -3,6 +3,7 @@
   position: fixed;
   height: var(--circle-size);
   width: var(--circle-size);
+  background-color: transparent;
   border: 1px solid white;
   border-radius: 50%;
   top: calc(var(--circle-size) / 2 * -1);

@@ -7,6 +7,10 @@
   align-items: center;
   text-align: center;
   overflow: hidden;
+  background-image: url(../img/title.jpg);
+  background-position: 0 -900px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #title .wrap {

@@ -101,7 +101,6 @@
 }
 
 #projects .wrap .project-grid .project-card .card-info .project-info .tech-list {
-  margin-top: 10px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -119,10 +118,13 @@
   color: #000;
 }
 
-#projects .wrap .project-grid .project-card .card-info .project-info a {
+#projects .wrap .project-grid .project-card .card-info .project-info .project-btn {
+  display: flex;
+  gap: 12px;
+}
+
+#projects .wrap .project-grid .project-card .card-info .project-info .project-btn a {
   display: inline-block;
-  margin-top: 12px;
-  margin-right: 12px;
   font-weight: bold;
   text-decoration: none;
   background-position: center;
@@ -133,12 +135,20 @@
   font-size: 0;
 }
 
-#projects .wrap .project-grid .project-card .card-info .project-info a:nth-of-type(1) {
+#projects .wrap .project-grid .project-card .card-info .project-info .project-btn a:nth-of-type(1) {
   background-image: url(../img/svg/git.svg);
 }
 
-#projects .wrap .project-grid .project-card .card-info .project-info a:nth-of-type(2) {
+#projects .wrap .project-grid .project-card .card-info .project-info .project-btn a:nth-of-type(1):hover {
+  background-image: url(../img/svg/git1-1.svg);
+}
+
+#projects .wrap .project-grid .project-card .card-info .project-info .project-btn a:nth-of-type(2) {
   background-image: url(../img/svg/link.svg);
+}
+
+#projects .wrap .project-grid .project-card .card-info .project-info .project-btn a:nth-of-type(2):hover {
+  background-image: url(../img/svg/link1-1.svg);
 }
 
 .more-wrap {
