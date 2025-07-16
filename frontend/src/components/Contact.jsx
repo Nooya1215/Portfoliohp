@@ -55,7 +55,7 @@ export default function Contact() {
   return (
     <section id="contact">
       <div className="wrap">
-        <h2 className="h2">Contact</h2>
+        <h2 className="h2">CONTACT</h2>
         <div className="contact-container">
           <div className="contact-card">
             <h3 className="h3">SEONWOO KIM</h3>
@@ -65,7 +65,7 @@ export default function Contact() {
             </div>
           </div>
           <form onSubmit={handleSubmit} className="form">
-            <h3></h3>
+            <h3>문의사항을 남겨주세요</h3>
             <p className='p'>Name</p>
             <input
               type="text"

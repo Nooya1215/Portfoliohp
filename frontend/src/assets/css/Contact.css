@@ -93,10 +93,15 @@
   align-items: center;
   gap: 10px;
   width: 450px;
-  height: 345px;
+  height: 387px;
   border: 1px solid #ccc;
   border-radius: 15px;
   padding: 25px;
+}
+
+#contact .wrap .contact-container .form h3 {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 #contact .wrap .contact-container .form .input {
