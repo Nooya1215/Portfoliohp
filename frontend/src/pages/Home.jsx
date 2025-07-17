@@ -24,8 +24,21 @@ export default function Home() {
   const sections = ['Title', 'About', 'Project', 'Contact', 'Footer'];
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // ✅ useIsMobile 훅 사용, 390 기준
   const isMobile = useIsMobile(390);
+
+  // 모달 열림 시 모바일에서 body 스크롤 잠금
+  useEffect(() => {
+    if (isMobile && selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    // 컴포넌트 언마운트 시에도 복구
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobile, selectedProject]);
 
   // Project 내부 wheel 이벤트 차단 (데스크탑 전용)
   useEffect(() => {
@@ -71,7 +84,7 @@ export default function Home() {
   return (
     <>
       {isMobile ? (
-        // ✅ 모바일 레이아웃
+        // 모바일 레이아웃
         <div className="mobile-layout">
           <Title />
           <About />
@@ -80,7 +93,7 @@ export default function Home() {
           <Footer />
         </div>
       ) : (
-        // ✅ 데스크탑: Swiper 슬라이드
+        // 데스크탑: Swiper 슬라이드
         <Swiper
           direction="vertical"
           slidesPerView="auto"
@@ -123,7 +136,7 @@ export default function Home() {
             >
               <span className="indicator-label">{sec}</span>
               <span className="indicator-labelbar">-</span>
-              <span className="indicator-dot" />
+              <span className="indicator-dot"/>
             </div>
           ))}
         </nav>
