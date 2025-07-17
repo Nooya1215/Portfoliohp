@@ -202,7 +202,11 @@
   }
 
   #projects .wrap .project-grid li {
+  
+  }
 
+  #projects .wrap .project-grid li:hover {
+    transform: translateY(0);
   }
 
   #projects .wrap .project-grid li article {
