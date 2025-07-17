@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import useIsMobile from '../hooks/useIsMobile';
 import '../assets/css/Title.css';
 
 const TypingText = ({ text, onComplete }) => {
@@ -51,16 +52,16 @@ const NameTyping = ({ names = [], typingSpeed = 150, pauseTime = 1000 }) => {
 
     if (!isDeleting) {
       if (display.length < currentName.length) {
-        setIsBlink(false); // 타이핑 중에는 커서 고정
+        setIsBlink(false);
         timeout = setTimeout(() => {
           setDisplay(currentName.slice(0, display.length + 1));
         }, typingSpeed);
       } else {
-        setIsBlink(true); // 타이핑 완료 → 커서 깜빡임 시작
+        setIsBlink(true);
         timeout = setTimeout(() => setIsDeleting(true), pauseTime);
       }
     } else {
-      setIsBlink(false); // 지우는 중에는 커서 고정
+      setIsBlink(false);
       if (display.length > 0) {
         timeout = setTimeout(() => {
           setDisplay(currentName.slice(0, display.length - 1));
@@ -87,6 +88,7 @@ export default function Title({ onIntroComplete }) {
   const [showNameTyping, setShowNameTyping] = useState(false);
   const [showDownline, setShowDownline] = useState(false);
   const isMounted = useRef(true);
+  const isMobile = useIsMobile(375);
 
   useEffect(() => {
     isMounted.current = true;
@@ -111,7 +113,6 @@ export default function Title({ onIntroComplete }) {
   const handleTypingComplete = () => {
     setShowNameTyping(true);
     setShowDownline(false);
-
     setTimeout(() => setShowDownline(true), 1000);
   };
 
@@ -127,23 +128,48 @@ export default function Title({ onIntroComplete }) {
         <div className="wrap">
           <div className="title-info">
             <div className="title-line-wrapper">
-              <motion.h2
-                className="hinge-left"
-                initial={{ rotateY: -180, opacity: 0 }}
-                animate={{ rotateY: 0, opacity: 1 }}
-                transition={{ duration: 1, ease: 'easeOut' }}
-              >
-                FRONT-END
-              </motion.h2>
+              {isMobile ? (
+                <>
+                  <motion.h2
+                    className="hinge-left"
+                    initial={{ rotateX: -180, opacity: 0 }}
+                    animate={{ rotateX: 0, opacity: 1 }}
+                    transition={{ duration: 1, ease: 'easeOut' }}
+                    style={{ transformOrigin: 'top center' }}
+                  >
+                    FRONT-END
+                  </motion.h2>
+                  <motion.h2
+                    className="hinge-left"
+                    initial={{ rotateX: -180, opacity: 0 }}
+                    animate={{ rotateX: 0, opacity: 1 }}
+                    transition={{ duration: 1, ease: 'easeOut', delay: 0.7 }}
+                    style={{ transformOrigin: 'top center' }}
+                  >
+                    DEVELOPER
+                  </motion.h2>
+                </>
+              ) : (
+                <>
+                  <motion.h2
+                    className="hinge-left"
+                    initial={{ rotateY: -180, opacity: 0 }}
+                    animate={{ rotateY: 0, opacity: 1 }}
+                    transition={{ duration: 1, ease: 'easeOut' }}
+                  >
+                    FRONT-END
+                  </motion.h2>
 
-              <motion.h2
-                className="hinge-right"
-                initial={{ rotateY: 180, opacity: 0 }}
-                animate={{ rotateY: 0, opacity: 1 }}
-                transition={{ duration: 1, ease: 'easeOut', delay: 0.7 }}
-              >
-                DEVELOPER
-              </motion.h2>
+                  <motion.h2
+                    className="hinge-right"
+                    initial={{ rotateY: 180, opacity: 0 }}
+                    animate={{ rotateY: 0, opacity: 1 }}
+                    transition={{ duration: 1, ease: 'easeOut', delay: 0.7 }}
+                  >
+                    DEVELOPER
+                  </motion.h2>
+                </>
+              )}
             </div>
 
             {step > 1 && (

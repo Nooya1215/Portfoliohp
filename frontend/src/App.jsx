@@ -3,10 +3,12 @@ import { BrowserRouter } from 'react-router-dom';
 import AppRouter from './router';
 import Loader from './components/Loader';
 import Cursor from './components/Cursor';
+import useIsMobile from './hooks/useIsMobile';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
+  const isMobile = useIsMobile(375);
   const alreadyLoaded = sessionStorage.getItem('loaded');
 
   useEffect(() => {
@@ -15,15 +17,14 @@ export default function App() {
       .catch(() => console.log('❌ Render 깨우기 요청 실패'));
 
     if (alreadyLoaded) {
-      setLoading(false); // 재방문은 로딩 없이
+      setLoading(false);
     } else {
       sessionStorage.setItem('loaded', 'true');
 
       const timer = setTimeout(() => {
-        setIsFadingOut(true); // 1단계: fade-out 트리거
+        setIsFadingOut(true);
 
-        // 2단계: fade-out 끝난 후 unmount
-        const unmountDelay = setTimeout(() => setLoading(false), 700); // 반드시 fade-out CSS duration보다 약간 더 길게
+        const unmountDelay = setTimeout(() => setLoading(false), 700);
 
         return () => clearTimeout(unmountDelay);
       }, 2000);
@@ -39,7 +40,7 @@ export default function App() {
       ) : (
         <BrowserRouter>
           <AppRouter />
-          <Cursor />
+          {!isMobile && <Cursor />}
         </BrowserRouter>
       )}
     </>
