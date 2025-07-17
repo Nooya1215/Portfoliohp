@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import profileImg from '../assets/img/profile.png';
-import skillsTools from '../data/SkillsTools.json';
 import '../assets/css/About.css';
 
 export default function About() {
-  const skillDescriptions = skillsTools.skills;
-  const toolDescriptions = skillsTools.tools;
+  const [skillDescriptions, setSkillDescriptions] = useState({});
+  const [toolDescriptions, setToolDescriptions] = useState({});
+  const [selectedTag, setSelectedTag] = useState(null);
+
+  useEffect(() => {
+    fetch('/data/SkillsTools.json')
+      .then((res) => res.json())
+      .then((data) => {
+        setSkillDescriptions(data.skills || {});
+        setToolDescriptions(data.tools || {});
+      })
+      .catch((err) => console.error('JSON fetch error:', err));
+  }, []);
 
   const skills = Object.keys(skillDescriptions);
   const tools = Object.keys(toolDescriptions);
-
-  const [selectedTag, setSelectedTag] = useState(null);
 
   const handleTagClick = (tag) => {
     setSelectedTag((prev) => (prev === tag ? null : tag));

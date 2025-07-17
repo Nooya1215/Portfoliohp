@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import projects from '../data/Projects.json';
 import '../assets/css/Project.css';
 
 export default function Project({ onSelect }) {
@@ -9,6 +8,14 @@ export default function Project({ onSelect }) {
   const [filter, setFilter] = useState('all');
   const [expanded, setExpanded] = useState(false);
   const [isFiltering, setIsFiltering] = useState(false);
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    fetch('/data/Projects.json')
+      .then((res) => res.json())
+      .then((data) => setProjects(data))
+      .catch((err) => console.error('Failed to load projects:', err));
+  }, []);
 
   const filtered = projects.filter((p) => filter === 'all' || p.type === filter);
   const displayedProjects = filtered.slice(0, visibleCount);
