@@ -82,7 +82,8 @@
   }
 
   .modal-overlay .modal-content {
-    max-width: 275px;
+    max-width: 300px;
+    padding: 25px;
   }
 
   .modal-overlay .modal-content button {
