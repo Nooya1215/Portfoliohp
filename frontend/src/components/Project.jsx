@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import useIsMobile from '../hooks/useIsMobile';
 import '../assets/css/Project.css';
 
 export default function Project({ onSelect }) {
-  const initialCount = 8;
+  const initialCountDesktop = 8;
+  const initialCountMobile = 3;
+  const isMobile = useIsMobile(375);
+
+  // 모바일 여부에 따라 기본 보여주는 개수 결정
+  const initialCount = isMobile ? initialCountMobile : initialCountDesktop;
+
   const [visibleCount, setVisibleCount] = useState(initialCount);
   const [filter, setFilter] = useState('all');
   const [expanded, setExpanded] = useState(false);
@@ -31,7 +38,8 @@ export default function Project({ onSelect }) {
 
   useEffect(() => {
     setVisibleCount(expanded ? filtered.length : initialCount);
-  }, [filter, expanded]);
+    // expanded가 바뀌거나 filter 바뀌면 기본 visibleCount 설정
+  }, [filter, expanded, isMobile]);
 
   useEffect(() => {
     setIsFiltering(filter !== 'all');
@@ -63,7 +71,7 @@ export default function Project({ onSelect }) {
 
         <ul className="project-grid">
           {displayedProjects.map((project, index) => {
-            const isAnimated = !isFiltering && index < initialCount;
+            const isAnimated = !isFiltering && index < initialCount && !isMobile;
 
             return (
               <motion.li
