@@ -40,39 +40,39 @@ const TypingText = ({ text, onComplete }) => {
 };
 
 const NameTyping = ({ names = [], typingSpeed = 150, pauseTime = 1000 }) => {
+  const [idx, setIdx] = useState(0);
   const [display, setDisplay] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [index, setIndex] = useState(0);
   const [isBlink, setIsBlink] = useState(false);
 
   useEffect(() => {
+    const currentName = names[idx];
     let timeout;
 
-    const currentName = names[index];
     if (!isDeleting) {
       if (display.length < currentName.length) {
-        setIsBlink(false);
+        setIsBlink(false); // 타이핑 중에는 커서 고정
         timeout = setTimeout(() => {
           setDisplay(currentName.slice(0, display.length + 1));
         }, typingSpeed);
       } else {
-        setIsBlink(true);
+        setIsBlink(true); // 타이핑 완료 → 커서 깜빡임 시작
         timeout = setTimeout(() => setIsDeleting(true), pauseTime);
       }
     } else {
-      setIsBlink(false);
+      setIsBlink(false); // 지우는 중에는 커서 고정
       if (display.length > 0) {
         timeout = setTimeout(() => {
           setDisplay(currentName.slice(0, display.length - 1));
         }, typingSpeed / 2);
       } else {
         setIsDeleting(false);
-        setIndex((prev) => (prev + 1) % names.length);
+        setIdx((prev) => (prev + 1) % names.length);
       }
     }
 
     return () => clearTimeout(timeout);
-  }, [display, isDeleting, index, names, typingSpeed, pauseTime]);
+  }, [display, isDeleting, idx, names, typingSpeed, pauseTime]);
 
   return (
     <h3 className="typing-name">
