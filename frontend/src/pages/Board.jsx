@@ -110,7 +110,7 @@ export default function Board() {
                 <form onSubmit={handleSubmit}>
                   <input
                     type="text"
-                    placeholder="이름 & 닉네임"
+                    placeholder="이름 & 닉네임 (최대 5자)"
                     value={form.name}
                     onChange={(e) =>
                       setForm({ ...form, name: e.target.value.slice(0, 5) })
@@ -118,8 +118,9 @@ export default function Board() {
                     required
                   />
                   <textarea
-                    placeholder="내용"
+                    placeholder="내용 (최대 50자)"
                     value={form.message}
+                    maxLength={50}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     required
                   />

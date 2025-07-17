@@ -136,6 +136,13 @@ app.post('/api/board', async (req, res) => {
       });
     }
 
+    if (message.length > 50) {
+      return res.status(400).json({
+        success: false,
+        message: '내용은 최대 50자까지 입력 가능합니다.'
+      });
+    }
+
     if (leoProfanity.check(name) || leoProfanity.check(message)) {
       return res.status(400).json({
         success: false,
