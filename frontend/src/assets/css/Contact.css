@@ -30,6 +30,7 @@
   position: relative;
   transition: 0.3s ease-out;
   cursor: none;
+  overflow: hidden;
 }
 
 #contact .wrap .contact-container .contact-card:hover {
@@ -195,4 +196,25 @@
 #contact .wrap .sending-text {
   font-size: 18px;
   letter-spacing: 1px;
+}
+
+.label-bottom-left,
+.label-top-right {
+  position: absolute;
+  width: 18px;
+  height: 120px;
+  background: #181818;
+  clip-path: polygon(0 0, 18px 0, 18px 120px, 0 120px);
+  transform: rotate(135deg);
+  font-size: 0;
+}
+
+.label-bottom-left {
+  bottom: -25px;
+  left: 25px;
+}
+
+.label-top-right {
+  top: -25px;
+  right: 25px;
 }

@@ -63,6 +63,8 @@ export default function Contact() {
               <p className='p'><strong>E-Mail</strong><span>:</span>sunwoo78341@gmail.com</p>
               <a href="https://github.com/Nooya1215" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong><span>:</span>github.com/Nooya1215</a>
             </div>
+            <div className="label-bottom-left">LEFT LABEL</div>
+            <div className="label-top-right">RIGHT LABEL</div>
           </div>
           <form onSubmit={handleSubmit} className="form">
             <h3>문의사항을 남겨주세요</h3>
