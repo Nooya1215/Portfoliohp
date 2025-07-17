@@ -73,6 +73,10 @@
   width: 90%;
 }
 
+#about .wrap .tag-list:nth-of-type(1) {
+  width: 80%;
+}
+
 #about .wrap .tag-list .tag {
   padding: 5px 17px;
   border: 1px solid #ccc;
