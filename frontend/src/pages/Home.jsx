@@ -25,7 +25,7 @@ export default function Home() {
   const [selectedProject, setSelectedProject] = useState(null);
 
   // ✅ useIsMobile 훅 사용, 375px 기준
-  const isMobile = useIsMobile(375);
+  const isMobile = useIsMobile(390);
 
   // Project 내부 wheel 이벤트 차단 (데스크탑 전용)
   useEffect(() => {

@@ -88,7 +88,7 @@ export default function Title({ onIntroComplete }) {
   const [showNameTyping, setShowNameTyping] = useState(false);
   const [showDownline, setShowDownline] = useState(false);
   const isMounted = useRef(true);
-  const isMobile = useIsMobile(375);
+  const isMobile = useIsMobile(390);
 
   useEffect(() => {
     isMounted.current = true;
