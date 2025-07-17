@@ -13,7 +13,7 @@ export default function Loader({ isFadingOut }) {
   }, []);
 
   return (
-    <section id="loader" className={isFadingOut ? 'fade-out' : ''}>
+    <section id="loader" className={isFadingOut ? 'fade-out' : 'fade-in'}>
       <div className="wrap">
         <div className="spinner" />
         <p>로딩중{dots}</p>
