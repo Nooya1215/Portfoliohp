@@ -243,3 +243,33 @@
   background-image: url(../img/svg/return2.svg);
   background-color: #fff !important;
 }
+
+@media screen and (max-width: 390px) {
+  #board {
+
+  }
+  #board .wrap {
+    
+  }
+  #board .wrap .board-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-bottom: 80px;
+  }
+  #board .wrap .board-header h2 {
+
+  }
+  #board .wrap .board-header button {
+    position: absolute;
+    right: 25px;
+    top: 110px;
+  }
+  #board .wrap ul {
+    width: calc(100% - 20px);
+  }
+  #board .wrap ul li {
+    width: 100%;
+  }
+}
