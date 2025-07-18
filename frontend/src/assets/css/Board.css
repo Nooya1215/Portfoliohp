@@ -264,7 +264,7 @@
   #board .wrap .board-header button {
     position: absolute;
     right: 25px;
-    top: 110px;
+    top: 90px;
   }
   #board .wrap ul {
     width: calc(100% - 20px);

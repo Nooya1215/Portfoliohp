@@ -111,7 +111,10 @@ export default function Board() {
 
           {showPopup && (
             <div className="popup-overlay" onClick={() => setShowPopup(false)}>
-              <div className="popup-form">
+              <div
+                className="popup-form"
+                onClick={(e) => e.stopPropagation()} // 👈 클릭 버블링 방지
+              >
                 <button className="close-btn" onClick={() => setShowPopup(false)}>X</button>
                 <form onSubmit={handleSubmit}>
                   <input
