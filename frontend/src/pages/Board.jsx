@@ -7,13 +7,13 @@ import useIsMobile from '../hooks/useIsMobile'; // 📌 모바일 감지 훅 추
 import "../assets/css/Board.css";
 
 export default function Board() {
-  const isMobile = useIsMobile(); // ✅ 훅 사용
+  const isMobile = useIsMobile();
   const [entries, setEntries] = useState([]);
   const [form, setForm] = useState({ name: '', message: '' });
   const [showPopup, setShowPopup] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const postsPerPage = 10;
+  const postsPerPage = isMobile ? 8 : 10;
 
   useEffect(() => {
     fetchEntries();

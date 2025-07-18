@@ -280,6 +280,9 @@
   #board .wrap .popup-overlay .popup-form .close-btn {
     display: none;
   }
+  #board .wrap .pagination {
+    bottom: 75px;
+  }
   #board .wrap .back-btn {
     bottom: 25px;
   }
