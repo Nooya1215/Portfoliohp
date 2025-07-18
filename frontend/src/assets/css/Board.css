@@ -280,4 +280,7 @@
   #board .wrap .popup-overlay .popup-form .close-btn {
     display: none;
   }
+  #board .wrap .back-btn {
+    bottom: 50px;
+  }
 }
