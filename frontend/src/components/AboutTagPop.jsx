@@ -40,7 +40,6 @@ export default function AboutTagPop({ tag, onClose }) {
         ) : (
           <p>정보를 찾을 수 없습니다.</p>
         )}
-        <button className="close-btn" onClick={onClose}>닫기</button>
       </div>
     </div>
   );
