@@ -136,10 +136,10 @@ app.post('/api/board', async (req, res) => {
       });
     }
 
-    if (message.length > 15) {
+    if (message.length > 20) {
       return res.status(400).json({
         success: false,
-        message: '내용은 최대 15자까지 입력 가능합니다.'
+        message: '내용은 최대 20자까지 입력 가능합니다.'
       });
     }
 
