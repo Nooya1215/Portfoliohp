@@ -126,7 +126,7 @@
 
 @media screen and (max-width: 390px) {
   #title {
-
+    background-position: -120px -95px;
   }
 
   #title .wrap {
