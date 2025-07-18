@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
+import useIsMobile from '../hooks/useIsMobile'; // ⬅️ 훅 연결
 import "../assets/css/Contact.css";
 
 export default function Contact() {
+  const isMobile = useIsMobile(); // ⬅️ 사용
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [sending, setSending] = useState(false);
+  const [dots, setDots] = useState('');
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-
-  const [dots, setDots] = useState('');
 
   useEffect(() => {
     let interval;
@@ -34,9 +35,7 @@ export default function Contact() {
 
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/contact`, form);
-
       setStatus(response.data.message);
-
       setShowPopup(true);
       setForm({ name: '', email: '', message: '' });
     } catch (error) {
@@ -61,13 +60,21 @@ export default function Contact() {
             <h3 className="h3">SEONWOO KIM</h3>
             <div className='card-info'>
               <p className='p'><strong>E-Mail</strong><span>:</span>sunwoo78341@gmail.com</p>
-              <a href="https://github.com/Nooya1215" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong><span>:</span>github.com/Nooya1215</a>
+              <a href="https://github.com/Nooya1215" target="_blank" rel="noopener noreferrer">
+                <strong>GitHub</strong><span>:</span>github.com/Nooya1215
+              </a>
             </div>
-            <div className="label-bottom-left">LEFT LABEL</div>
-            <div className="label-top-right">RIGHT LABEL</div>
+            {!isMobile && (
+              <>
+                <div className="label-bottom-left">LEFT LABEL</div>
+                <div className="label-top-right">RIGHT LABEL</div>
+              </>
+            )}
           </div>
+
           <form onSubmit={handleSubmit} className="form">
             <h3>문의사항을 남겨주세요</h3>
+
             <p className='p'>Name</p>
             <input
               type="text"
@@ -78,6 +85,7 @@ export default function Contact() {
               required
               className="input"
             />
+
             <p className="p">Mail</p>
             <input
               type="email"
@@ -88,6 +96,7 @@ export default function Contact() {
               required
               className="input"
             />
+
             <p className="p">Message</p>
             <textarea
               name="message"
@@ -98,6 +107,7 @@ export default function Contact() {
               rows={5}
               className="input"
             />
+
             <button type="submit" className="contact-btn">
               보내기
             </button>
@@ -117,10 +127,11 @@ export default function Contact() {
             )}
           </AnimatePresence>
         </div>
+
         {sending && (
           <div className="sending-overlay">
             <div className="sending-spinner" />
-            <p className="sending-text">메일 보내는 중.{dots}</p>
+            <p className="sending-text">메일 보내는 중{dots}</p>
           </div>
         )}
       </div>
