@@ -166,6 +166,8 @@
     font-size: 20px;
     margin-top: 60px;
     margin-bottom: 45px !important;
+    opacity: 0.8;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   #title .wrap .title-info .intro-body .typing-name {
