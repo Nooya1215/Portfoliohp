@@ -29,8 +29,8 @@
 
 @media screen and (max-width: 390px) {
   #aside {
-    right: 20px;
-    bottom: 100px;
+    right: 25px;
+    bottom: 50px;
     z-index: 9999;
   }
 
