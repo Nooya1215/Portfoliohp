@@ -127,9 +127,9 @@ export default function Board() {
                     required
                   />
                   <textarea
-                    placeholder="내용 (최대 20자)"
+                    placeholder="내용 (최대 35자)"
                     value={form.message}
-                    maxLength={20}
+                    maxLength={35}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     required
                   />
