@@ -249,4 +249,9 @@
     box-sizing: border-box;
     padding: 30px 25px;
   }
+
+  #contact .wrap .contact-container .popup-message {
+    left: 50%;
+    transform: translateX(-50%) !important;
+  }
 }
