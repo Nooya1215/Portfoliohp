@@ -259,7 +259,7 @@
     margin-bottom: 80px;
   }
   #board .wrap .board-header h2 {
-
+    font-size: 50px;
   }
   #board .wrap .board-header button {
     position: absolute;
@@ -271,5 +271,13 @@
   }
   #board .wrap ul li {
     width: 100%;
+  }
+  #board .wrap .popup-overlay .popup-form {
+    padding: 20px;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+  }
+  #board .wrap .popup-overlay .popup-form .close-btn {
+    display: none;
   }
 }

@@ -3,14 +3,16 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Footer from '../components/Footer';
+import useIsMobile from '../hooks/useIsMobile'; // 📌 모바일 감지 훅 추가
 import "../assets/css/Board.css";
 
 export default function Board() {
+  const isMobile = useIsMobile(); // ✅ 훅 사용
   const [entries, setEntries] = useState([]);
   const [form, setForm] = useState({ name: '', message: '' });
   const [showPopup, setShowPopup] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  
+
   const postsPerPage = 10;
 
   useEffect(() => {
@@ -21,7 +23,6 @@ export default function Board() {
     try {
       const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/board`);
       const data = Array.isArray(res.data) ? res.data : res.data.data || [];
-      // 최신순 정렬
       const sorted = [...data].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
       setEntries(sorted);
     } catch (err) {
@@ -56,7 +57,12 @@ export default function Board() {
         <div className="wrap">
           <div className="board-header">
             <h2 className="h2">BOARD</h2>
-            <button className="open-btn" onClick={() => setShowPopup(true)}>등록</button>
+            <button className="open-btn" onClick={() => {
+              if (isMobile) {}
+              setShowPopup(true);
+            }}>
+              등록
+            </button>
           </div>
 
           <ul className="entry-list">
@@ -104,7 +110,7 @@ export default function Board() {
           )}
 
           {showPopup && (
-            <div className="popup-overlay">
+            <div className="popup-overlay" onClick={() => setShowPopup(false)}>
               <div className="popup-form">
                 <button className="close-btn" onClick={() => setShowPopup(false)}>X</button>
                 <form onSubmit={handleSubmit}>
