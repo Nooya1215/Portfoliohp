@@ -16,3 +16,17 @@
 #footer .wrap p {
 
 }
+
+@media screen and (max-width: 390px) {
+  #footer {
+
+  }
+  
+  #footer .wrap {
+
+  }
+
+  #footer .wrap p {
+    font-size: 14px;
+  }
+}

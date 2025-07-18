@@ -13,7 +13,7 @@
 
 }
 
-#about .wrap h2 {
+#about .wrap > h2 {
   transform: translateY(70px) !important;
   font-weight: bold;
 }
@@ -50,6 +50,7 @@
 #about .wrap .about-box .about-info p span {
   height: fit-content;
   font-size: 20px;
+  font-weight: bold;
 }
 
 #about .wrap .about-box .about-info > p::after {
@@ -106,4 +107,51 @@
 #about .wrap .tag-list .tag:hover, #about .wrap .tag-list .tag.active {
   background-color: #fff;
   color: #000;
+}
+
+@media screen and (max-width: 390px) {
+  #about {
+
+  }
+
+  #about .wrap {
+
+  }
+
+  #about .wrap h2 {
+    font-size: 50px;
+  }
+
+  #about .wrap .about-box {
+
+  }
+
+  #about .wrap .about-box img {
+    display: none;
+  }
+
+  #about .wrap .about-box .about-info {
+    margin-left: 0;
+    width: calc(100% - 30px);
+  }
+
+  #about .wrap .about-box .about-info p {
+    font-size: 16px;
+  }
+
+  #about .wrap .about-box .about-info p span {
+    font-size: 18px;
+  }
+
+  #about .wrap .about-box .about-info h3 {
+    text-align: center;
+  }
+
+  #about .wrap .about-box .about-info .tag-list {
+    
+  }
+
+  #about .wrap .about-box .about-info .tag-list span {
+    width: 105px;
+  }
 }

@@ -223,18 +223,26 @@
   #contact {
     
   }
+
   #contact .wrap {
     
   }
+
+  #contact .wrap h2 {
+    font-size: 50px;
+  }
+
   #contact .wrap .contact-container {
     width: 100%;
     flex-direction: column;
     justify-content: center;
     gap: 20px;
   }
+
   #contact .wrap .contact-container .contact-card {
     display: none;
   }
+
   #contact .wrap .contact-container .form {
     width: calc(100% - 20px);
     height: 400px;

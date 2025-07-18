@@ -201,51 +201,51 @@
 
   }
 
-  #projects .wrap .project-grid li {
+  #projects .wrap .project-grid .project-card {
   
   }
 
-  #projects .wrap .project-grid li:hover {
-    transform: translateY(0);
+  #projects .wrap .project-grid .project-card:hover {
+    transform: translateY(0) !important;
   }
 
-  #projects .wrap .project-grid li article {
-
-  }
-
-  #projects .wrap .project-grid li article .project-image {
+  #projects .wrap .project-grid .project-card article {
 
   }
 
-  #projects .wrap .project-grid li article .project-info {
+  #projects .wrap .project-grid .project-card article .project-image {
 
   }
 
-  #projects .wrap .project-grid li article .project-info h3 {
+  #projects .wrap .project-grid .project-card article .project-info {
 
   }
 
-  #projects .wrap .project-grid li article .project-info .tech-list {
+  #projects .wrap .project-grid .project-card article .project-info h3 {
 
   }
 
-  #projects .wrap .project-grid li article .project-info .tech-list span {
+  #projects .wrap .project-grid .project-card article .project-info .tech-.project-cardst {
 
   }
 
-  #projects .wrap .project-grid li article .project-info .project-btn {
+  #projects .wrap .project-grid .project-card article .project-info .tech-.project-cardst span {
 
   }
 
-  #projects .wrap .project-grid li article .project-info .project-btn a {
+  #projects .wrap .project-grid .project-card article .project-info .project-btn {
 
   }
 
-  #projects .wrap .project-grid li article .project-info .project-btn a:nth-of-type(1) {
+  #projects .wrap .project-grid .project-card article .project-info .project-btn a {
 
   }
 
-  #projects .wrap .project-grid li article .project-info .project-btn a:nth-of-type(2) {
+  #projects .wrap .project-grid .project-card article .project-info .project-btn a:nth-of-type(1) {
+
+  }
+
+  #projects .wrap .project-grid .project-card article .project-info .project-btn a:nth-of-type(2) {
 
   }
 }

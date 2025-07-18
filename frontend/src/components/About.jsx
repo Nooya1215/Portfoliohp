@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import profileImg from '../assets/img/profile.png';
+import AboutTagPop from './AboutTagPop';
+import useIsMobile from '../hooks/useIsMobile';
 import '../assets/css/About.css';
 
 export default function About() {
   const [skillDescriptions, setSkillDescriptions] = useState({});
   const [toolDescriptions, setToolDescriptions] = useState({});
   const [selectedTag, setSelectedTag] = useState(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     fetch('/data/SkillsTools.json')
@@ -115,7 +118,7 @@ export default function About() {
             </div>
 
             <AnimatePresence mode="wait">
-              {selectedTag && (
+              {!isMobile && selectedTag && (
                 <motion.div
                   key={selectedTag}
                   className="tag-description"
@@ -129,6 +132,14 @@ export default function About() {
                 </motion.div>
               )}
             </AnimatePresence>
+
+            {/* 👇 이 부분을 추가 */}
+            {isMobile && selectedTag && (
+              <AboutTagPop
+                tag={selectedTag}
+                onClose={() => setSelectedTag(null)}
+              />
+            )}
           </div>
         </div>
       </div>

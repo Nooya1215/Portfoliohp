@@ -18,21 +18,20 @@ import useIsMobile from '../hooks/useIsMobile';
 
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isLocked, setIsLocked] = useState(true); // 스크롤 잠금
+  const [isLocked, setIsLocked] = useState(true);
   const swiperRef = useRef(null);
   const projectRef = useRef(null);
-  const sections = ['Title', 'About', 'Project', 'Contact', 'Footer'];
   const [selectedProject, setSelectedProject] = useState(null);
 
   const isMobile = useIsMobile(390);
+  const sections = ['Title', 'About', 'Project', 'Contact', 'Footer'];
 
+  // 모바일 최초 진입 시 scrollTop 초기화
   useEffect(() => {
-    if (isMobile) {
-      window.scrollTo(0, 0);
-    }
-  }, []);
+    if (isMobile) window.scrollTo(0, 0);
+  }, [isMobile]);
 
-  // 모달 열림 시 모바일에서 body 스크롤 잠금
+  // 모바일에서 모달 열릴 때 스크롤 잠금
   useEffect(() => {
     if (isMobile && selectedProject) {
       document.body.style.overflow = 'hidden';
@@ -40,13 +39,12 @@ export default function Home() {
       document.body.style.overflow = '';
     }
 
-    // 컴포넌트 언마운트 시에도 복구
     return () => {
       document.body.style.overflow = '';
     };
   }, [isMobile, selectedProject]);
 
-  // Project 내부 wheel 이벤트 차단 (데스크탑 전용)
+  // 데스크탑에서 Project 영역 wheel 이벤트 차단
   useEffect(() => {
     if (isMobile) return;
 
@@ -56,30 +54,22 @@ export default function Home() {
       const atTop = el.scrollTop === 0;
       const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 1;
 
-      if (isScrollable) {
-        if ((e.deltaY < 0 && !atTop) || (e.deltaY > 0 && !atBottom)) {
-          e.stopPropagation();
-        }
+      if (isScrollable && ((e.deltaY < 0 && !atTop) || (e.deltaY > 0 && !atBottom))) {
+        e.stopPropagation();
       }
     };
 
-    if (el) {
-      el.addEventListener('wheel', handleWheel, { passive: false });
-    }
-
-    return () => {
-      if (el) {
-        el.removeEventListener('wheel', handleWheel);
-      }
-    };
+    if (el) el.addEventListener('wheel', handleWheel, { passive: false });
+    return () => el && el.removeEventListener('wheel', handleWheel);
   }, [isMobile]);
 
-  // Swiper 스크롤 잠금/해제 (데스크탑 전용)
+  // 스크롤 잠금 상태에 따라 Swiper 슬라이드/휠 제어
   useEffect(() => {
     if (!swiperRef.current || isMobile) return;
 
     swiperRef.current.allowSlideNext = !isLocked;
     swiperRef.current.allowSlidePrev = !isLocked;
+
     if (swiperRef.current.mousewheel) {
       isLocked
         ? swiperRef.current.mousewheel.disable()
@@ -87,10 +77,28 @@ export default function Home() {
     }
   }, [isLocked, isMobile]);
 
+  // 모바일/데스크탑 전환 시 Swiper 상태 재설정
+  useEffect(() => {
+    if (!swiperRef.current) return;
+
+    swiperRef.current.allowTouchMove = !isLocked && isMobile;
+    swiperRef.current.allowSlideNext = !isLocked && !isMobile;
+    swiperRef.current.allowSlidePrev = !isLocked && !isMobile;
+
+    if (swiperRef.current.mousewheel) {
+      if (isMobile) {
+        swiperRef.current.mousewheel.disable();
+      } else {
+        isLocked
+          ? swiperRef.current.mousewheel.disable()
+          : swiperRef.current.mousewheel.enable();
+      }
+    }
+  }, [isMobile, isLocked]);
+
   return (
     <>
       {isMobile ? (
-        // 모바일 레이아웃
         <div className="mobile-layout">
           <Title />
           <About />
@@ -99,13 +107,13 @@ export default function Home() {
           <Footer />
         </div>
       ) : (
-        // 데스크탑: Swiper 슬라이드
         <Swiper
           direction="vertical"
           slidesPerView="auto"
           speed={800}
           simulateTouch={!isLocked}
           modules={[Navigation, Mousewheel]}
+          mousewheel
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
@@ -122,7 +130,6 @@ export default function Home() {
         </Swiper>
       )}
 
-      {/* 모달은 모바일/데스크탑 공통 */}
       {selectedProject && (
         <ProjectInfoModal
           project={selectedProject}
@@ -130,7 +137,6 @@ export default function Home() {
         />
       )}
 
-      {/* 데스크탑 전용 Aside & Indicator */}
       {!isMobile && <Aside />}
       {!isMobile && (
         <nav className="section-indicator">
@@ -142,7 +148,7 @@ export default function Home() {
             >
               <span className="indicator-label">{sec}</span>
               <span className="indicator-labelbar">-</span>
-              <span className="indicator-dot"/>
+              <span className="indicator-dot" />
             </div>
           ))}
         </nav>
