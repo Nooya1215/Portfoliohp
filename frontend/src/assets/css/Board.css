@@ -280,9 +280,9 @@
     display: none;
   }
   #board .wrap .pagination {
-    bottom: 90px;
+    bottom: 110px;
   }
   #board .wrap .back-btn {
-    bottom: 40px;
+    bottom: 50px;
   }
 }
