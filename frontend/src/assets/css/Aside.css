@@ -26,3 +26,11 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+@media screen and (max-width: 390px) {
+  #aside {
+    right: 20px;
+    bottom: 200px;
+    z-index: 9999;
+  }
+}

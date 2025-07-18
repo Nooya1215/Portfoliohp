@@ -137,7 +137,7 @@ export default function Home() {
         />
       )}
 
-      {!isMobile && <Aside />}
+      <Aside />
       {!isMobile && (
         <nav className="section-indicator">
           {sections.map((sec, idx) => (
