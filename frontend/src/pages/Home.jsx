@@ -26,6 +26,12 @@ export default function Home() {
 
   const isMobile = useIsMobile(390);
 
+  useEffect(() => {
+    if (isMobile) {
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   // 모달 열림 시 모바일에서 body 스크롤 잠금
   useEffect(() => {
     if (isMobile && selectedProject) {
