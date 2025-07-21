@@ -19,6 +19,7 @@ import useIsMobile from '../hooks/useIsMobile';
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLocked, setIsLocked] = useState(true);
+  const [isScrollLocked, setIsScrollLocked] = useState(true);
   const swiperRef = useRef(null);
   const projectRef = useRef(null);
   const [selectedProject, setSelectedProject] = useState(null);
@@ -31,18 +32,47 @@ export default function Home() {
     if (isMobile) window.scrollTo(0, 0);
   }, [isMobile]);
 
+  // 모바일에서 Title 인트로 동안 스크롤 잠금
+  useEffect(() => {
+    if (isMobile && isScrollLocked) {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.overflowY = 'scroll';
+      document.body.style.width = '100%';
+      document.body.dataset.scrollY = scrollY;
+    } else {
+      const scrollY = document.body.dataset.scrollY;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.overflowY = '';
+      document.body.style.width = '';
+      if (scrollY) window.scrollTo(0, parseInt(scrollY));
+      delete document.body.dataset.scrollY;
+    }
+
+    return () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.overflowY = '';
+      document.body.style.width = '';
+      delete document.body.dataset.scrollY;
+    };
+  }, [isMobile, isScrollLocked]);
+
   // 모바일에서 모달 열릴 때 스크롤 잠금
   useEffect(() => {
     if (isMobile && selectedProject) {
       document.body.style.overflow = 'hidden';
-    } else {
+    } else if (!isScrollLocked) {
       document.body.style.overflow = '';
     }
-
     return () => {
-      document.body.style.overflow = '';
+      if (!isScrollLocked) {
+        document.body.style.overflow = '';
+      }
     };
-  }, [isMobile, selectedProject]);
+  }, [isMobile, selectedProject, isScrollLocked]);
 
   // 데스크탑에서 Project 영역 wheel 이벤트 차단
   useEffect(() => {
@@ -100,7 +130,7 @@ export default function Home() {
     <>
       {isMobile ? (
         <div className="mobile-layout">
-          <Title />
+          <Title onIntroComplete={() => setIsScrollLocked(false)} />
           <About />
           <Project onSelect={setSelectedProject} />
           <Contact />
