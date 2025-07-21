@@ -53,13 +53,6 @@
   font-weight: bold;
 }
 
-#about .wrap .about-box .about-info > p::after {
-  content: '';
-  width: 100px;
-  height: 1px;
-  background-color: #ccc;
-}
-
 #about .wrap .about-box .about-info h3 {
   margin-top: 20px;
   margin-bottom: 10px;
@@ -137,6 +130,7 @@
 
   #about .wrap .about-box .about-info p {
     font-size: 16px;
+    margin: 0 auto;
   }
 
   #about .wrap .about-box .about-info p span {
@@ -148,10 +142,15 @@
   }
 
   #about .wrap .about-box .about-info .tag-list {
-    
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 auto;
+    max-width: 495px;
+    width: 100%;
   }
 
   #about .wrap .about-box .about-info .tag-list span {
-    width: 105px;
+    width: 100%;
   }
 }

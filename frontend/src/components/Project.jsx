@@ -5,7 +5,7 @@ import '../assets/css/Project.css';
 
 export default function Project({ onSelect }) {
   const initialCountDesktop = 8;
-  const initialCountMobile = 3;
+  const initialCountMobile = 4;
   const isMobile = useIsMobile(768);
 
   // 모바일 여부에 따라 기본 보여주는 개수 결정
