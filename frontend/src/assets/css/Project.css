@@ -180,6 +180,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0;
   }
 
   #projects .wrap h2 {
