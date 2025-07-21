@@ -248,40 +248,50 @@
   #board {
 
   }
+
   #board .wrap {
     
   }
+
   #board .wrap .board-header {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
   }
+
   #board .wrap .board-header h2 {
     font-size: 50px;
   }
+
   #board .wrap .board-header button {
     position: absolute;
     right: 25px;
     top: 80px;
   }
+
   #board .wrap ul {
-    width: calc(100% - 20px);
+    width: calc(100% - 50px);
   }
+
   #board .wrap ul li {
     width: 100%;
   }
+
   #board .wrap .popup-overlay .popup-form {
     padding: 20px;
     width: calc(100% - 20px);
     box-sizing: border-box;
   }
+
   #board .wrap .popup-overlay .popup-form .close-btn {
     display: none;
   }
+
   #board .wrap .pagination {
     bottom: 110px;
   }
+
   #board .wrap .back-btn {
     bottom: 50px;
   }
