@@ -8,7 +8,7 @@ import useIsMobile from './hooks/useIsMobile';
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
-  const isMobile = useIsMobile(390);
+  const isMobile = useIsMobile(768);
   const alreadyLoaded = sessionStorage.getItem('loaded');
 
   useEffect(() => {
