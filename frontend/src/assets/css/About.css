@@ -120,7 +120,7 @@
 
   #about .wrap .about-box {
     height: auto;
-    align-items: flex-start;
+    align-items: center;
   }
 
   #about .wrap .about-box img {
@@ -130,7 +130,7 @@
   #about .wrap .about-box .about-info {
     margin-left: 0;
     width: calc(100% - 30px);
-    justify-content: flex-start;
+    justify-content: center;
     height: auto;
   }
 
