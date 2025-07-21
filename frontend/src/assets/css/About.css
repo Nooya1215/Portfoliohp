@@ -108,15 +108,19 @@
   }
 
   #about .wrap {
-
+    gap: 30px;
+    justify-content: center;
   }
 
   #about .wrap h2 {
     font-size: 50px;
+    transform: translateY(0) !important;
+    margin-bottom: 20px;
   }
 
   #about .wrap .about-box {
-
+    height: auto;
+    align-items: flex-start;
   }
 
   #about .wrap .about-box img {
@@ -126,11 +130,13 @@
   #about .wrap .about-box .about-info {
     margin-left: 0;
     width: calc(100% - 30px);
+    justify-content: flex-start;
   }
 
   #about .wrap .about-box .about-info p {
     font-size: 16px;
     margin: 0 auto;
+    margin-bottom: 30px;
   }
 
   #about .wrap .about-box .about-info p span {
@@ -148,6 +154,10 @@
     margin: 0 auto;
     max-width: 495px;
     width: 100%;
+  }
+
+  #about .wrap .about-box .about-info .tag-list:nth-of-type(1) {
+    margin-bottom: 30px;
   }
 
   #about .wrap .about-box .about-info .tag-list span {
