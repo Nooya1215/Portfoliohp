@@ -134,7 +134,7 @@
   }
 
   #about .wrap .about-box .about-info p span {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   #about .wrap .about-box .about-info h3 {
@@ -152,5 +152,6 @@
 
   #about .wrap .about-box .about-info .tag-list span {
     width: 100%;
+    padding: 5px 8px;
   }
 }

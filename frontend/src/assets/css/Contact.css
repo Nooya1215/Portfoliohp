@@ -228,8 +228,9 @@
     
   }
 
-  #contact .wrap h2 {
+  #contact .wrap .h2 {
     font-size: 50px;
+    transform: translateY(60px);
   }
 
   #contact .wrap .contact-container {
