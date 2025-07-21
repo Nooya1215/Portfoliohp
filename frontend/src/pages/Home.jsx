@@ -24,7 +24,7 @@ export default function Home() {
   const projectRef = useRef(null);
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const isMobile = useIsMobile(390);
+  const isMobile = useIsMobile(768);
   const sections = ['Title', 'About', 'Project', 'Contact', 'Footer'];
 
   // 모바일 최초 진입 시 scrollTop 초기화
