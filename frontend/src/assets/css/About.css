@@ -1,5 +1,5 @@
 #about {
-
+  min-height: auto;
 }
 
 #about .wrap {
@@ -116,7 +116,7 @@
   }
 
   #about .wrap > h2 {
-    transform: translateY(-90px) !important;
+    transform: translateY(-130px) !important;
     font-size: 50px;
     /* margin-bottom: 30px; */
   }
@@ -161,6 +161,7 @@
 
   #about .wrap .tag-list .tag {
     width: 100%;
+    padding: 5px 10px;
   }
 
   #about .wrap .about-box .about-info .tag-description {
