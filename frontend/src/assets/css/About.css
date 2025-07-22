@@ -1,5 +1,5 @@
 #about {
-  min-height: auto;
+  
 }
 
 #about .wrap {
@@ -116,7 +116,6 @@
   }
 
   #about .wrap > h2 {
-    transform: translateY(-130px) !important;
     font-size: 50px;
   }
 
@@ -131,7 +130,6 @@
   #about .wrap .about-box .about-info {
     margin-left: 0;
     width: calc(100% - 30px);
-    justify-content: center;
   }
 
   #about .wrap .about-box .about-info p {
