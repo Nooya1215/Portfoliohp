@@ -108,21 +108,20 @@
   }
 
   #about .wrap {
-
-  }
-
-  #about .wrap {
+    /* gap: 30px; */
     justify-content: center;
   }
 
-  #about .wrap > h2 {
-    transform: translateY(0) !important;
+  #about .wrap h2 {
     font-size: 50px;
+    transform: translateY(0) !important;
     margin-bottom: 30px;
   }
 
   #about .wrap .about-box {
     height: auto;
+    align-items: center;
+    margin-bottom: 30px;
   }
 
   #about .wrap .about-box img {
@@ -133,50 +132,38 @@
     margin-left: 0;
     width: calc(100% - 30px);
     justify-content: center;
+    height: auto;
   }
 
   #about .wrap .about-box .about-info p {
-    margin: 0 auto 30px;
+    font-size: 16px;
+    margin: 0 auto;
+    margin-bottom: 30px;
   }
 
   #about .wrap .about-box .about-info p span {
-
+    font-size: 17px;
   }
 
   #about .wrap .about-box .about-info h3 {
     text-align: center;
   }
 
-  #about .wrap .tag-list {
+  #about .wrap .about-box .about-info .tag-list {
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(4, 1fr);
     margin: 0 auto;
     max-width: 495px;
     width: 100%;
   }
 
-  #about .wrap .tag-list:nth-of-type(1) {
+  #about .wrap .about-box .about-info .tag-list:nth-of-type(1) {
     margin-bottom: 30px;
   }
 
-  #about .wrap .tag-list .tag {
+  #about .wrap .about-box .about-info .tag-list span {
     width: 100%;
-  }
-
-  #about .wrap .about-box .about-info .tag-description {
-
-  }
-
-  #about .wrap .about-box .about-info .tag-description p:nth-of-type(2) {
-
-  }
-
-  #about .wrap .about-box .about-info .tag-description p:nth-of-type(2) span {
-
-  }
-
-  #about .wrap .tag-list .tag:hover,
-  #about .wrap .tag-list .tag.active {
-
+    padding: 5px 8px;
   }
 }
