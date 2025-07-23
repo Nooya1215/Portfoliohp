@@ -53,6 +53,7 @@ export default function About() {
           />
 
           <div className="about-info">
+            <a href="https://www.notion.so/239f2e02dbf98085a144d9026b43bdcb?source=copy_link" target="_blank" rel="noopener noreferrer">더보기</a>
             <motion.p
               className="p"
               initial={{ opacity: 0, y: 30 }}

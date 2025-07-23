@@ -43,6 +43,23 @@
   position: relative;
 }
 
+#about .wrap .about-box .about-info a {
+  font-size: 0;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 30px;
+  right: 120px;
+  background-image: url(../img/svg/plus.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#about .wrap .about-box .about-info a:hover {
+  background-image: url(../img/svg/plus1-1.svg);
+}
+
 #about .wrap .about-box .about-info p {
   
 }
