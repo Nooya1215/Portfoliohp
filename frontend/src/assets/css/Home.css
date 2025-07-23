@@ -73,10 +73,12 @@
 
 .indicator-item.active .indicator-label {
   color: #fff;
+  user-select: none;
 }
 
 .indicator-item.active .indicator-labelbar {
   color: #fff;
+  user-select: none;
 }
 
 .indicator-item.active .indicator-dot {

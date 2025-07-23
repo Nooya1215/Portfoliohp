@@ -40,9 +40,9 @@
 
 #projects .wrap .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(340px, max-content));
   justify-content: start;
+  gap: 25px;
   grid-auto-flow: dense;
   margin-top: 40px;
   padding: 0;
@@ -209,7 +209,7 @@
     gap: 20px;
     width: 100%;
     max-width: 690px;
-    justify-items: center;
+    justify-content: center;
   }
 
   #projects .wrap .project-grid .project-card {
