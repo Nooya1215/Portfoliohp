@@ -7,7 +7,8 @@
     "type": "solo",
     "image": "/img/simplydesign.png",
     "git": "https://github.com/Nooya1215/Portfolio1",
-    "link": "https://nooya1215.github.io/Portfolio1/"
+    "link": "https://nooya1215.github.io/Portfolio1/",
+    "notion": "https://your-notion-link.com"
   },
   {
     "title": "LS그룹",
@@ -17,7 +18,8 @@
     "type": "solo",
     "image": "https://via.placeholder.com/400x300?text=Portfolio",
     "git": "https://github.com/Nooya1215/Portfolio2",
-    "link": "https://nooya1215.github.io/Portfolio2/"
+    "link": "https://nooya1215.github.io/Portfolio2/",
+    "notion": "https://your-notion-link.com"
   },
   {
     "title": "WOODIN",
@@ -27,7 +29,8 @@
     "type": "solo",
     "image": "https://via.placeholder.com/400x300?text=Portfolio",
     "git": "https://github.com/Nooya1215/WOODIN",
-    "link": "#"
+    "link": "#",
+    "notion": "https://your-notion-link.com"
   },
   {
     "title": "MOREVI",
@@ -37,7 +40,8 @@
     "type": "team",
     "image": "https://via.placeholder.com/400x300?text=1-D-CLASS",
     "git": "https://github.com/Nooya1215/Morevi",
-    "link": "https://yourprojectlink.com"
+    "link": "https://yourprojectlink.com",
+    "notion": "https://your-notion-link.com"
   },
   {
     "title": "1D CLASS",
@@ -47,6 +51,7 @@
     "type": "team",
     "image": "https://via.placeholder.com/400x300?text=Portfolio",
     "git": "https://yourportfolio.com",
-    "link": "https://yourportfolio.com"
+    "link": "https://yourportfolio.com",
+    "notion": "https://your-notion-link.com"
   }
 ]

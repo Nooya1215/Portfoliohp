@@ -19,6 +19,7 @@ export default function ProjectInfo({ project, onClose }) {
         <div className="project-btn">
           <a href={project.git} target="_blank" rel="noreferrer">GITHUB</a>
           <a href={project.link} target="_blank" rel="noreferrer">Link</a>
+          <a href={project.notion} target="_blank" rel="noreferrer">Notion</a>
         </div>
       </div>
     </div>
