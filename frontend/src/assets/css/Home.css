@@ -51,10 +51,12 @@
 .indicator-label {
   font-size: 14px;
   color: #666;
+  user-select: none;
 }
 
 .indicator-labelbar {
   color: #666;
+  user-select: none;
 }
 
 .indicator-item:hover > * {
