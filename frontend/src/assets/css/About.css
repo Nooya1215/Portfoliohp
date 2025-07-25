@@ -150,6 +150,11 @@
     width: calc(100% - 30px);
   }
 
+  #about .wrap .about-box .about-info a {
+    top: -95px;
+    right: 15px;
+  }
+
   #about .wrap .about-box .about-info p {
     margin: 0 auto 30px;
   }
