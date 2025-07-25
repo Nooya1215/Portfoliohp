@@ -7,6 +7,7 @@ import '../assets/css/Home.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
+import MobileHeader from '../components/MobileHeader';
 import Title from '../components/Title';
 import About from '../components/About';
 import Project from '../components/Project';
@@ -130,6 +131,7 @@ export default function Home() {
     <>
       {isMobile ? (
         <div className="mobile-layout">
+          <MobileHeader />
           <Title onIntroComplete={() => setIsScrollLocked(false)} />
           <About />
           <Project onSelect={setSelectedProject} />
