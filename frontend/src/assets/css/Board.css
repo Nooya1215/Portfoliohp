@@ -71,6 +71,18 @@
 
 #board .wrap ul li p:nth-of-type(2) {
   width: 10%;
+  justify-content: end;
+  position: relative;
+}
+
+#board .wrap ul li p:nth-of-type(2)::before {
+  content: '';
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #f1f1f1;
+  position: absolute;
 }
 
 #board .wrap .pagination {
