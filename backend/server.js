@@ -80,17 +80,18 @@ app.get('/api/data', async (req, res) => {
 
 // ✅ 2. Supabase 실시간 구독 - DB 변경 시 캐시 무효화
 supabase
-  .channel('cache-invalidator')
+  .channel('board-cache-invalidator')
   .on(
     'postgres_changes',
     {
-      event: '*',           // INSERT | UPDATE | DELETE | *
+      event: '*',
       schema: 'public',
-      table: 'board',  // 대상 테이블명
+      table: 'board',
     },
-    (payload) => {
-      console.log('🔄 DB 변경 감지 → 캐시 삭제');
-      cache.delete('my-data');
+    () => {
+      console.log('🔄 board 테이블 변경 감지 → 캐시 무효화');
+      boardCache = null;
+      boardCacheTime = 0;
     }
   )
   .subscribe();
