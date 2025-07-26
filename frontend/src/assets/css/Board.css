@@ -61,7 +61,7 @@
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  font-size: clamp(11px, 2.5vw, 18px);
+  font-size: clamp(11px, 2.5vw, 16px);
 }
 
 #board .wrap ul li p strong {
@@ -74,7 +74,7 @@
   position: absolute;
   height: calc(100% - 5px);
   top: 2.5px;
-  right: 80px;
+  right: 100px;
 }
 
 #board .wrap .pagination {
