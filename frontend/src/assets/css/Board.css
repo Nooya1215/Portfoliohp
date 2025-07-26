@@ -48,8 +48,6 @@
 }
 
 #board .wrap ul li {
-  display: flex;
-  align-items: center;
   width: 1000px;
   height: 35px;
   border: 1px solid #ccc;
@@ -65,26 +63,17 @@
   height: 100%;
 }
 
-#board .wrap ul li p:nth-of-type(1) {
-  min-width: 75%;
-  max-width: 90%;
-}
-
-#board .wrap ul li p:nth-of-type(2) {
-  max-width: 25%;
-  min-width: 10%;
-  justify-content: end;
+#board .wrap ul li p strong {
   position: relative;
 }
 
-#board .wrap ul li p:nth-of-type(2)::before {
+#board .wrap ul li p strong::before {
   content: '';
-  left: -10px;
-  top: 0;
-  width: 1px;
-  height: 100%;
-  background-color: #f1f1f1;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
   position: absolute;
+  height: calc(100% - 5px);
+  top: 2.5px;
+  right: 80px;
 }
 
 #board .wrap .pagination {

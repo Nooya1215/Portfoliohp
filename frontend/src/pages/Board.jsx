@@ -74,8 +74,8 @@ export default function Board() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                {/* <p className="p">{entry.message} <strong>{entry.name}</strong></p> */}
-                <p className='p'>{entry.message}</p><p>{entry.name}</p>
+                <p className="p">{entry.message} <strong>{entry.name}</strong></p>
+                {/* <p className='p'>{entry.message}</p><p>{entry.name}</p> */}
               </motion.li>
             ))}
           </ul>
