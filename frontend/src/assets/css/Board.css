@@ -67,19 +67,19 @@
 
 #board .wrap ul li p:nth-of-type(1) {
   min-width: 75%;
-  width: 90%;
+  max-width: 90%;
 }
 
 #board .wrap ul li p:nth-of-type(2) {
   max-width: 25%;
-  width: 10%;
+  min-width: 10%;
   justify-content: end;
   position: relative;
 }
 
 #board .wrap ul li p:nth-of-type(2)::before {
   content: '';
-  left: 0;
+  left: -10px;
   top: 0;
   width: 1px;
   height: 100%;
