@@ -66,7 +66,7 @@ app.get('/api/data', async (req, res) => {
   }
 
   console.log('🌐 Supabase에서 조회');
-  const { data, error } = await supabase.from('your_table').select('*');
+  const { data, error } = await supabase.from('board').select('*');
 
   if (error) {
     console.error('Supabase fetch error:', error);
@@ -86,7 +86,7 @@ supabase
     {
       event: '*',           // INSERT | UPDATE | DELETE | *
       schema: 'public',
-      table: 'your_table',  // 대상 테이블명
+      table: 'board',  // 대상 테이블명
     },
     (payload) => {
       console.log('🔄 DB 변경 감지 → 캐시 삭제');
