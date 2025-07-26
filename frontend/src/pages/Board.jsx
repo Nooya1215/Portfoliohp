@@ -75,7 +75,7 @@ export default function Board() {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
                 {/* <p className="p">{entry.message} <strong>{entry.name}</strong></p> */}
-                <p>{entry.message}</p><span>|</span><p>{entry.name}</p>
+                <p className='p'>{entry.message}</p><p>{entry.name}</p>
               </motion.li>
             ))}
           </ul>
