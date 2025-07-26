@@ -66,11 +66,11 @@
 }
 
 #board .wrap ul li p:nth-of-type(1) {
-  width: 90%;
+  width: 75%;
 }
 
 #board .wrap ul li p:nth-of-type(2) {
-  width: 10%;
+  width: 25%;
   justify-content: end;
   position: relative;
 }
