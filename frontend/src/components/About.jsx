@@ -9,6 +9,7 @@ export default function About() {
   const [skillDescriptions, setSkillDescriptions] = useState({});
   const [toolDescriptions, setToolDescriptions] = useState({});
   const [selectedTag, setSelectedTag] = useState(null);
+  const [showInitialHint, setShowInitialHint] = useState(true); // 처음 안내문 표시 여부
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -25,12 +26,14 @@ export default function About() {
   const tools = Object.keys(toolDescriptions);
 
   const handleTagClick = (tag) => {
+    if (showInitialHint) setShowInitialHint(false); // 첫 클릭 시 안내문 제거
     setSelectedTag((prev) => (prev === tag ? null : tag));
   };
 
   return (
     <section id="about">
       <div className="wrap">
+        {/* 제목 */}
         <motion.h2
           className="h2"
           initial={{ opacity: 0, y: 20 }}
@@ -42,6 +45,7 @@ export default function About() {
         </motion.h2>
 
         <div className="about-box">
+          {/* 프로필 이미지 */}
           <motion.img
             src={profileImg}
             alt="프로필 이미지"
@@ -53,7 +57,15 @@ export default function About() {
           />
 
           <div className="about-info">
-            <a href="https://www.notion.so/239f2e02dbf98027ac38c1b6e1b76326?source=copy_link" target="_blank" rel="noopener noreferrer">더보기</a>
+            <a
+              href="https://www.notion.so/239f2e02dbf98027ac38c1b6e1b76326?source=copy_link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              더보기
+            </a>
+
+            {/* 소개글 */}
             <motion.p
               className="p"
               initial={{ opacity: 0, y: 30 }}
@@ -70,6 +82,7 @@ export default function About() {
               성실하게 끝까지 완성도 높은 결과물을 만들어내는 것에 큰 가치를 둡니다.
             </motion.p>
 
+            {/* Skills */}
             <motion.h3
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -94,6 +107,7 @@ export default function About() {
               ))}
             </div>
 
+            {/* Tools */}
             <motion.h3
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -110,7 +124,10 @@ export default function About() {
                   onClick={() => handleTagClick(tag)}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 + (skills.length + index) * 0.1 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.4 + (skills.length + index) * 0.1
+                  }}
                   viewport={{ once: true }}
                 >
                   {tag}
@@ -118,28 +135,53 @@ export default function About() {
               ))}
             </div>
 
+            {/* 안내문 & 태그 설명 */}
             <AnimatePresence mode="wait">
+              {/* 안내문 - 모바일에서는 아예 비활성화 */}
+              {!isMobile && !selectedTag && showInitialHint && (
+                <motion.div
+                  key="hint"
+                  className="tag-description hint"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }} // ← 변경
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  <p>스킬 또는 툴 태그를 클릭하면 설명이 표시됩니다.</p>
+                </motion.div>
+              )}
+
+              {/* 태그 설명 - 아래에서 올라오는 모션 */}
               {!isMobile && selectedTag && (
                 <motion.div
                   key={selectedTag}
                   className="tag-description"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }} // ← 변경
+                  exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.4 }}
+                  viewport={{ once: true }}
                 >
-                  <p>{skillDescriptions[selectedTag]?.description || toolDescriptions[selectedTag]?.description}</p>
-                  <p>Level:<span>{skillDescriptions[selectedTag]?.level || toolDescriptions[selectedTag]?.level}%</span></p>
+                  <p>
+                    {skillDescriptions[selectedTag]?.description ||
+                      toolDescriptions[selectedTag]?.description}
+                  </p>
+                  <p>
+                    Level:
+                    <span>
+                      {skillDescriptions[selectedTag]?.level ||
+                        toolDescriptions[selectedTag]?.level}
+                      %
+                    </span>
+                  </p>
                 </motion.div>
               )}
             </AnimatePresence>
 
-            {/* 👇 이 부분을 추가 */}
+            {/* 모바일 팝업 */}
             {isMobile && selectedTag && (
-              <AboutTagPop
-                tag={selectedTag}
-                onClose={() => setSelectedTag(null)}
-              />
+              <AboutTagPop tag={selectedTag} onClose={() => setSelectedTag(null)} />
             )}
           </div>
         </div>
