@@ -10,11 +10,15 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY
+);
+
+const cache = new Map();
+
 app.use(cors());
 app.use(express.json());
-
-// ✅ Supabase 클라이언트 생성
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
 // ✅ 욕설 필터 초기화 및 한국어 욕설 추가
 leoProfanity.add([
@@ -53,6 +57,44 @@ async function preloadBoardCache() {
     console.error('❌ Board 캐시 preload 실패:', err);
   }
 }
+
+// ✅ 1. API 라우트 - 캐싱 후 응답
+app.get('/api/data', async (req, res) => {
+  if (cache.has('my-data')) {
+    console.log('📦 캐시에서 응답');
+    return res.json(cache.get('my-data'));
+  }
+
+  console.log('🌐 Supabase에서 조회');
+  const { data, error } = await supabase.from('board').select('*');
+
+  if (error) {
+    console.error('Supabase fetch error:', error);
+    return res.status(500).json({ error: 'Failed to fetch data from DB' });
+  }
+
+  // 캐싱 후 응답
+  cache.set('my-data', data);
+  res.json(data);
+});
+
+// ✅ 2. Supabase 실시간 구독 - DB 변경 시 캐시 무효화
+supabase
+  .channel('board-cache-invalidator')
+  .on(
+    'postgres_changes',
+    {
+      event: '*',
+      schema: 'public',
+      table: 'board',
+    },
+    () => {
+      console.log('🔄 board 테이블 변경 감지 → 캐시 무효화');
+      boardCache = null;
+      boardCacheTime = 0;
+    }
+  )
+  .subscribe();
 
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
@@ -136,10 +178,10 @@ app.post('/api/board', async (req, res) => {
       });
     }
 
-    if (message.length > 35) {
+    if (message.length > 20) {
       return res.status(400).json({
         success: false,
-        message: '내용은 최대 35자까지 입력 가능합니다.'
+        message: '내용은 최대 20자까지 입력 가능합니다.'
       });
     }
 

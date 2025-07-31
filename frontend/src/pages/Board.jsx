@@ -75,6 +75,7 @@ export default function Board() {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
                 <p className="p">{entry.message} <strong>{entry.name}</strong></p>
+                {/* <p className='p'>{entry.message}</p><p>{entry.name}</p> */}
               </motion.li>
             ))}
           </ul>
@@ -127,9 +128,9 @@ export default function Board() {
                     required
                   />
                   <textarea
-                    placeholder="내용 (최대 35자)"
+                    placeholder="내용 (최대 20자)"
                     value={form.message}
-                    maxLength={35}
+                    maxLength={20}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     required
                   />

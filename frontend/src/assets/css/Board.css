@@ -7,6 +7,7 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
+  position: relative;
 }
 
 #board .wrap .board-header {
@@ -52,7 +53,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
-  padding: 15px;
+  padding: 5px 15px;
 }
 
 #board .wrap ul li p {
@@ -60,6 +61,7 @@
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  font-size: clamp(11px, 2.5vw, 16px);
 }
 
 #board .wrap ul li p strong {
@@ -72,14 +74,14 @@
   position: absolute;
   height: calc(100% - 5px);
   top: 2.5px;
-  right: 80px;
+  right: 100px;
 }
 
 #board .wrap .pagination {
   display: flex;
   gap: 10px;
   position: absolute;
-  bottom: 200px;
+  bottom: 120px;
 }
 
 #board .wrap .pagination button {
@@ -235,7 +237,7 @@
   background-size: contain;
   font-size: 0;
   position: absolute;
-  bottom: 150px;
+  bottom: 50px;
   transition: background-color 0.3s ease;
 }
 
