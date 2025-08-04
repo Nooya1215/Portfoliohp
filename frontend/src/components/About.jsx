@@ -148,7 +148,7 @@ export default function About() {
                   transition={{ duration: 0.4 }}
                   viewport={{ once: true }}
                 >
-                  <p>스킬 또는 툴 태그를 클릭하면 설명이 표시됩니다.</p>
+                  <p>Skills 또는 Tools 태그를 클릭시 해당 태그의 설명이 표시됩니다.</p>
                 </motion.div>
               )}
 
