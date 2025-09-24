@@ -16,7 +16,7 @@
     "info": "대기업 홈페이지 레이아웃을 그대로 구현하며 CSS Grid와 Flexbox를 연습했습니다. \n반응형 레이아웃과 전역 스타일 관리도 학습했습니다.",
     "tech": ["HTML", "CSS", "Javascript"],
     "type": "solo",
-    "image": "https://via.placeholder.com/400x300?text=Portfolio",
+    "image": "/img/ls.png",
     "git": "https://github.com/Nooya1215/LS-Portfolio",
     "link": "https://nooya1215.github.io/LS-Portfolio/",
     "notion": "https://www.notion.so/LS-23af2e02dbf9802c93c0e55caeb7dc16?source=copy_link"
@@ -27,7 +27,7 @@
     "info": "WOODIN은 가구 브랜드 웹사이트를 클론 코딩한 프로젝트입니다.\nObserver API를 활용한 섹션 활성화 트리거를 구현하고,\nGSAP으로 스크롤 애니메이션을 자연스럽게 적용했습니다.\n또한 Slick과 jQuery를 사용해 배너 슬라이더와 제품 디테일 갤러리를 제작했습니다.",
     "tech": ["HTML", "CSS", "Javascript"],
     "type": "solo",
-    "image": "https://via.placeholder.com/400x300?text=Portfolio",
+    "image": "/img/woodin.png",
     "git": "https://github.com/Nooya1215/WOODIN",
     "link": "#",
     "notion": "https://your-notion-link.com"
@@ -49,7 +49,7 @@
     "info": "1D CLASS는 원데이 클래스 예약 플랫폼으로 React를 사용해 사용자 예약 페이지를 구현했습니다. Node.js(Express) 서버와 MySQL DB를 연동해 예약 데이터 관리(CRUD)를 담당했고 \nJWT를 활용해 로그인·회원가입 인증 기능을 구축했습니다. \n또한 Rasa 오픈소스를 적용해 AI 챗봇 기능을 개발했으며 \n협업은 Discord로 진행했고 UI 설계는 Figma로 체계화했습니다.",
     "tech": ["React", "Node.js", "MySQL"],
     "type": "team",
-    "image": "https://via.placeholder.com/400x300?text=Portfolio",
+    "image": "/img/1-D-CLASS.png",
     "git": "https://yourportfolio.com",
     "link": "https://yourportfolio.com",
     "notion": "https://your-notion-link.com"
