@@ -16,7 +16,7 @@
     "info": "대기업 홈페이지 레이아웃을 그대로 구현하며 CSS Grid와 Flexbox를 연습했습니다. \n반응형 레이아웃과 전역 스타일 관리도 학습했습니다.",
     "tech": ["HTML", "CSS", "Javascript"],
     "type": "solo",
-    "image": "/img/ls.png",
+    "image": "/img/LS.png",
     "git": "https://github.com/Nooya1215/LS-Portfolio",
     "link": "https://nooya1215.github.io/LS-Portfolio/",
     "notion": "https://www.notion.so/LS-23af2e02dbf9802c93c0e55caeb7dc16?source=copy_link"
