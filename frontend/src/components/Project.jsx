@@ -95,7 +95,7 @@ export default function Project({ onSelect }) {
                     <div className="project-btn">
                       <a href={project.git} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>GITHUB</a>
                       <a href={project.link} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>Link</a>
-                      <a href={project.notion} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>Notion</a>
+                      {/* <a href={project.notion} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>Notion</a> */}
                     </div>
                   </div>
                 </article>

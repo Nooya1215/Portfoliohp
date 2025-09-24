@@ -29,18 +29,18 @@
     "type": "solo",
     "image": "/img/woodin.png",
     "git": "https://github.com/Nooya1215/WOODIN",
-    "link": "#",
+    "link": "https://nooya1215.github.io/WOODIN/",
     "notion": "https://your-notion-link.com"
   },
   {
     "title": "MOREVI",
     "description": "투썬 팀원과 함께 만든 여행 예약 플랫폼",
-    "info": "React와 Node.js로 프론트-백엔드를 연결했습니다. MySQL로 여행 상품과 예약 정보를 관리하고, \n국내 여행지를 기준으로 한 예약 리스트/검색 기능을 구현했습니다.",
+    "info": "React와 Node.js로 프론트-백엔드를 연결했습니다. MySQL로 여행 상품과 예약 정보를 관리하고, \n국내 여행지를 기준으로 한 예약 리스트/검색 기능을 구현했습니다. \n(미배포)",
     "tech": ["React", "Node.js", "MySQL"],
     "type": "team",
-    "image": "https://via.placeholder.com/400x300?text=1-D-CLASS",
+    "image": "/img/morevi.png",
     "git": "https://github.com/Nooya1215/Morevi",
-    "link": "https://yourprojectlink.com",
+    "link": "#",
     "notion": "https://your-notion-link.com"
   },
   {
