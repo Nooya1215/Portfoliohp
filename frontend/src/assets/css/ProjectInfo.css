@@ -92,6 +92,10 @@
   background-image: url(../img/svg/notion1-1.svg);
 }
 
+.modal-overlay > div > div > a:nth-child(2) {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   .modal-overlay {
     
