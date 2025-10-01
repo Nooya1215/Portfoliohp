@@ -133,7 +133,7 @@
   font-size: 0;
 }
 
-#projects .wrap .project-grid .project-card .card-info .project-info .project-btn a:nth-last-of-type {
+#projects .wrap .project-grid .project-card .card-info .project-info .project-btn a:nth-of-type(3) {
   display: none;
 }
 
