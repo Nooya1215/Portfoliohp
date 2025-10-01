@@ -14,7 +14,7 @@ export default function ProjectInfo({ project, onClose }) {
         <img src={project.image} alt={project.title} />
         <h2>{project.title}</h2>
         {project.info.split('\n').map((line, index) => (
-          <p key={index}>{line}</p>
+          <p key={index}>{line || '\u00A0'}</p>
         ))}
         <div className="project-btn">
           <a href={project.git} target="_blank" rel="noreferrer">GITHUB</a>
