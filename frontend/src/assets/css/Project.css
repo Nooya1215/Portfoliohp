@@ -134,7 +134,7 @@
 }
 
 /* 미배포 버튼 삭제 */
-#projects .wrap .project-grid .project-card .project-card:nth-child(4) .card-info .project-info .project-btn a:nth-child(2) {
+#projects > div > ul.project-grid > li:nth-child(4) > article > div > div.project-btn > a:nth-child(2) {
   display: none !important;
 }
 
