@@ -92,6 +92,7 @@
   background-image: url(../img/svg/notion1-1.svg);
 }
 
+/* 미배포 버튼 삭제 */
 .modal-overlay > div > div > a:nth-child(2) {
   display: none;
 }
